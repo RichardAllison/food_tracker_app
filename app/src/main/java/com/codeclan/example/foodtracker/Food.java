@@ -1,7 +1,5 @@
 package com.codeclan.example.foodtracker;
 
-import java.util.ArrayList;
-
 public class Food implements Consumable {
 
     private String name;
@@ -11,7 +9,7 @@ public class Food implements Consumable {
 //    private ArrayList<Food> ingredients; //?
 
     //nutritional information (extension thought)
-//    private int calories;
+    private int calories;
 //    private int carbohydrates;
 //    private int fat;
 //    private int protein;

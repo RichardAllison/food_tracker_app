@@ -6,7 +6,6 @@ import org.junit.Test;
 //import java.util.Date;
 //import java.sql.Time;
 import java.time.LocalDate;
-import java.time.LocalTime;
 
 import static org.junit.Assert.assertEquals;
 
@@ -14,7 +13,6 @@ public class RecordTest {
 
     Food bread;
     Drink irnBru;
-
     Record<Food> foodRecord;
     Record<Drink> drinkRecord;
 
@@ -22,8 +20,8 @@ public class RecordTest {
     public void before() {
         bread = new Food("bread", "Allinsons");
         irnBru = new Drink("Irn-Bru", "Barr");
-        foodRecord = new Record<>(bread, LocalDate.now(), LocalTime.now(), MealTime.AFTERNOON_MEAL, "slice");
-        drinkRecord = new Record<>(irnBru, LocalDate.now(), LocalTime.now(), MealTime.AFTERNOON_MEAL, "50ml");
+        foodRecord = new Record<>(bread, LocalDate.now(), MealTime.AFTERNOON_MEAL, "slice"); //LocalTime.now()
+        drinkRecord = new Record<>(irnBru, LocalDate.now(), MealTime.AFTERNOON_MEAL, "50ml"); //LocalTime.now()
     }
 
     @Test

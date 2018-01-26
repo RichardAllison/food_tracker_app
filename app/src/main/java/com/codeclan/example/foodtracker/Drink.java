@@ -5,7 +5,7 @@ public class Drink implements Consumable {
     private String brand;
 //    private String type;
 //    private String description;
-//    private int calories;
+    private int calories;
 //    private int carbohydrates;
 //    private int fat;
 //    private int protein;

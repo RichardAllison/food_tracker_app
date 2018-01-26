@@ -2,20 +2,19 @@ package com.codeclan.example.foodtracker;
 
 //import java.util.Date;
 //import java.sql.Time;
+
 import java.time.LocalDate;
-import java.time.LocalTime;
+//import java.time.LocalTime;
 public class Record<T extends Consumable> {
 
     private T item;
     private LocalDate date;
-    private LocalTime time;
     private MealTime meal;
     private String portion;
 
-    public Record(T item, LocalDate date, LocalTime time, MealTime meal, String portion) {
+    public Record(T item, LocalDate date, MealTime meal, String portion) {
         this.item = item;
         this.date = date;
-        this.time = time;
         this.meal = meal;
         this.portion = portion;
     }
@@ -27,10 +26,6 @@ public class Record<T extends Consumable> {
 
     public LocalDate getDate() {
         return this.date;
-    }
-
-    public LocalTime getTime() {
-        return this.time;
     }
 
     public MealTime getMealTime() {

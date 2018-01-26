@@ -7,4 +7,5 @@
     <string name="title_notifications">Notifications</string>
     <string name="say_hello">Hello!</string>
     <string name="menu_toast_hello">Hello!</string>
+    <string name="view_all_records">View All Records</string>
 </resources>
