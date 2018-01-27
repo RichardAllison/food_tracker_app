@@ -10,13 +10,14 @@ public class Record<T extends Consumable> {
     private T item;
     private LocalDate date;
     private MealTime meal;
-    private String portion;
+    private String portion_size;
+//    portion size unit
 
     public Record(T item, LocalDate date, MealTime meal, String portion) {
         this.item = item;
         this.date = date;
         this.meal = meal;
-        this.portion = portion;
+        this.portion_size = portion_size;
     }
 
 
@@ -33,6 +34,6 @@ public class Record<T extends Consumable> {
     }
 
     public String getPortion() {
-        return portion;
+        return portion_size;
     }
 }

@@ -16,10 +16,27 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ViewRecordsActivity"
+        <activity
+            android:name=".ViewRecordsActivity"
             android:label="@string/view_all_records"
-            android:parentActivityName=".MainActivity">
-        </activity>
+            android:parentActivityName=".MainActivity" />
+        <activity
+            android:name=".AddRecordActivity"
+            android:label="@string/add_new_record"
+            android:parentActivityName=".MainActivity" />
+        <activity
+            android:name=".SearchFoodActivity"
+            android:label="@string/search_food"
+            android:parentActivityName=".AddRecordActivity" />
+        <activity
+            android:name=".CreateFoodActivity"
+            android:label="@string/create_food"
+            android:parentActivityName=".SearchFoodActivity" />
+        <activity
+            android:name=".AddFoodRecordActivity"
+            android:label="@string/add_food_record" />
+        <activity android:name=".FavouritesActivity" />
+        <activity android:name=".PlanMealActivity"></activity>
     </application>
 
 </manifest>

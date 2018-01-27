@@ -10,11 +10,17 @@ public class Food implements Consumable {
 
     //nutritional information (extension thought)
     private int calories;
-//    private int carbohydrates;
-//    private int fat;
-//    private int protein;
-//    private int salt;
-//    private int sugar;
+    int glycemicIndex;
+    private int carbohydrates;
+    private int fat;
+    private int saturatedFat;
+    private int transFat;
+    private int cholesterol;
+    private int protein;
+    private int sodium;
+    private int potassium;
+    private int fiber;
+    private int sugar;
 
     public Food(String name) {
         this.name = name;
