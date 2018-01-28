@@ -10,12 +10,6 @@ public class FoodTrackerContract {
 
     private static final String CONTENT_AUTHORITY = "com.codeclan.example.foodtracker.app";
     private static final Uri BASE_CONTENT_URI = Uri.parse("content://" + CONTENT_AUTHORITY);
-//    static long normalizeDate(long date) {
-//        Time time = new Time();
-//        time.set(date);
-//        int julianDay = Time.getJulianDay(date, time.gmtoff);
-//        return time.setJulianDay(julianDay);
-//    }
 
     public static abstract class FoodTrackerEntry implements BaseColumns {
 

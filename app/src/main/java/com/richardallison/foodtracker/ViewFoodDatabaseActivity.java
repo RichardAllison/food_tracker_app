@@ -8,12 +8,9 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ListView;
-import android.widget.TextView;
 
 import com.richardallison.foodtracker.data.FoodTrackerContract;
 import com.richardallison.foodtracker.data.FoodTrackerDbHelper;
-
-import java.util.ArrayList;
 
 public class ViewFoodDatabaseActivity extends AppCompatActivity {
 
@@ -21,12 +18,11 @@ public class ViewFoodDatabaseActivity extends AppCompatActivity {
     FoodTrackerDbHelper mDbHelper;
     Cursor cursor;
 
+    FoodCursorAdapter foodCursorAdapter;
+
     Button createFoodButton;
     ListView foodDatabaseListView;
-    TextView foodDatabaseTextView;
-
-//    ArrayList<Food> foodDatabase;
-    FoodCursorAdapter foodCursorAdapter;
+//    View emptyView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,7 +31,6 @@ public class ViewFoodDatabaseActivity extends AppCompatActivity {
 
         createFoodButton = findViewById(R.id.create_food_button);
         foodDatabaseListView = findViewById(R.id.food_database_list);
-        foodDatabaseTextView = findViewById(R.id.textView3);
 
         displayFoodDatabase();
 
@@ -51,10 +46,6 @@ public class ViewFoodDatabaseActivity extends AppCompatActivity {
 
         mDbHelper = new FoodTrackerDbHelper(this);
         db = mDbHelper.getReadableDatabase();
-//        foodDatabaseListView.setAdapter(foodAdapter);
-
-//        foodDatabase = new ArrayList<>();
-//        foodAdapter = new FoodAdapter(this, foodDatabase);
 
         String[] columns = {
                 FoodTrackerContract.FoodTrackerEntry._ID,
@@ -78,19 +69,8 @@ public class ViewFoodDatabaseActivity extends AppCompatActivity {
 
         foodCursorAdapter = new FoodCursorAdapter(this, cursor);
         foodDatabaseListView.setAdapter(foodCursorAdapter);
-
-//        try {
-//            foodDatabaseTextView.setText(FoodTrackerContract.FoodTrackerEntry._ID + ": " + FoodTrackerContract.FoodTrackerEntry.KEY_NAME + "\n");
-//            int idColumnIndex = cursor.getColumnIndex(FoodTrackerContract.FoodTrackerEntry._ID);
-//            int nameColumnIndex = cursor.getColumnIndex(FoodTrackerContract.FoodTrackerEntry.KEY_NAME);
-//            while (cursor.moveToNext()) {
-//                int currentID = cursor.getInt(idColumnIndex);
-//                String currentName = cursor.getString(nameColumnIndex);
-//                foodDatabaseTextView.append(("\n" + currentID + ": " + currentName));
-//            }
-//        } finally {
-//            cursor.close();
-//        }
+//        emptyView = findViewById(R.id.empty_view);
+//        foodDatabaseListView.setEmptyView(emptyView);
 
     }
 

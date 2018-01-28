@@ -20,7 +20,8 @@
             android:name=".ViewFoodDatabaseActivity"
             android:label="@string/food_database"
             android:parentActivityName=".MainActivity" />
-        <activity android:name=".CreateFoodActivity"></activity>
+        <activity android:name=".CreateFoodActivity" />
+        <activity android:name=".ViewAllRecordsActivity"></activity>
     </application>
 
 </manifest>
