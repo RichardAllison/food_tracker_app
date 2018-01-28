@@ -20,8 +20,17 @@
             android:name=".ViewFoodDatabaseActivity"
             android:label="@string/food_database"
             android:parentActivityName=".MainActivity" />
-        <activity android:name=".CreateFoodActivity" />
-        <activity android:name=".ViewAllRecordsActivity"></activity>
+        <activity
+            android:name=".CreateFoodActivity"
+            android:label="@string/create_food"
+            android:parentActivityName=".ViewFoodDatabaseActivity" />
+        <activity
+            android:name=".ViewAllRecordsActivity"
+            android:label="@string/user_records"
+            android:parentActivityName=".MainActivity" />
+        <activity android:name=".CreateRecordActivity"
+            android:label="@string/new_record"
+            android:parentActivityName=".ViewAllRecordsActivity" />
     </application>
 
 </manifest>

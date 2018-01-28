@@ -22,4 +22,9 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(this, ViewFoodDatabaseActivity.class);
         startActivity(intent);
     }
+
+    public void onViewRecordsButtonClicked(View button) {
+        Intent intent = new Intent(this, ViewAllRecordsActivity.class);
+        startActivity(intent);
+    }
 }

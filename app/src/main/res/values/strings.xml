@@ -3,4 +3,7 @@
     <string name="food_database">Food Database</string>
     <string name="add_food">Add Food</string>
     <string name="empty_view_title">There is no food here!</string>
+    <string name="create_food">Create Food</string>
+    <string name="user_records">User Records</string>
+    <string name="new_record">New Record</string>
 </resources>

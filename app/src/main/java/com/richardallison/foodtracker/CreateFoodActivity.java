@@ -1,6 +1,7 @@
 package com.richardallison.foodtracker;
 
 import android.content.ContentValues;
+import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -44,14 +45,15 @@ public class CreateFoodActivity extends AppCompatActivity {
         contentValues.put(FoodTrackerContract.FoodTrackerEntry.KEY_NAME, name);
         contentValues.put(FoodTrackerContract.FoodTrackerEntry.KEY_TYPE, type);
         contentValues.put(FoodTrackerContract.FoodTrackerEntry.KEY_BRAND, brand);
+
+
         long newRowId = db.insert(FoodTrackerContract.FoodTrackerEntry.TABLE_FOOD_AND_DRINKS, null, contentValues);
         Toast.makeText(this, name + " has been added to food database", Toast.LENGTH_LONG).show();
-//        Intent intent = new Intent();
-//
-//
-//        if (intent.resolveActivity(getPackageManager()) != null) {
-//            startActivity(intent);
-//        }
+
+        Intent intent = new Intent(this, CreateFoodActivity.class);
+        if (intent.resolveActivity(getPackageManager()) != null) {
+            startActivity(intent);
+        }
     }
 
 }

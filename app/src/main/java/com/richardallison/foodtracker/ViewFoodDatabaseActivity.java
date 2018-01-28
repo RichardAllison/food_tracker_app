@@ -74,6 +74,4 @@ public class ViewFoodDatabaseActivity extends AppCompatActivity {
 
     }
 
-
-
 }
