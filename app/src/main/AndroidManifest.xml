@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.codeclan.example.foodtracker">
+    package="com.richardallison.foodtracker">
 
     <application
         android:allowBackup="true"
@@ -17,26 +17,10 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".ViewRecordsActivity"
-            android:label="@string/view_all_records"
+            android:name=".ViewFoodDatabaseActivity"
+            android:label="@string/food_database"
             android:parentActivityName=".MainActivity" />
-        <activity
-            android:name=".AddRecordActivity"
-            android:label="@string/add_new_record"
-            android:parentActivityName=".MainActivity" />
-        <activity
-            android:name=".SearchFoodActivity"
-            android:label="@string/search_food"
-            android:parentActivityName=".AddRecordActivity" />
-        <activity
-            android:name=".CreateFoodActivity"
-            android:label="@string/create_food"
-            android:parentActivityName=".SearchFoodActivity" />
-        <activity
-            android:name=".AddFoodRecordActivity"
-            android:label="@string/add_food_record" />
-        <activity android:name=".FavouritesActivity" />
-        <activity android:name=".PlanMealActivity"></activity>
+        <activity android:name=".CreateFoodActivity"></activity>
     </application>
 
 </manifest>

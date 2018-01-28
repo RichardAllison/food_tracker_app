@@ -1,16 +1,5 @@
 <resources>
     <string name="app_name">Food Tracker</string>
-    <string name="title_activity_record">RecordActivity</string>
-    <string name="title_activity_select_date">SelectDateActivity</string>
-    <string name="title_home">Home</string>
-    <string name="title_dashboard">Dashboard</string>
-    <string name="title_notifications">Notifications</string>
-    <string name="say_hello">Hello!</string>
-    <string name="menu_toast_hello">Hello!</string>
-    <string name="view_all_records">View All Records</string>
-    <string name="add_new_record">Add New Record</string>
-    <string name="add_food_record">Add Food Record</string>
-    <string name="create_food">Create Food</string>
-    <string name="search_food">Search Food Database</string>
-    <string name="title_activity_favourites">FavouritesActivity</string>
+    <string name="food_database">Food Database</string>
+    <string name="add_food">Add Food</string>
 </resources>
