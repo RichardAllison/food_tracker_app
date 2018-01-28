@@ -20,9 +20,13 @@ public class ViewFoodDatabaseActivity extends AppCompatActivity {
     SQLiteDatabase db;
     FoodTrackerDbHelper mDbHelper;
     Cursor cursor;
+
     Button createFoodButton;
     ListView foodDatabaseListView;
     TextView foodDatabaseTextView;
+
+//    ArrayList<Food> foodDatabase;
+    FoodCursorAdapter foodCursorAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,10 +37,7 @@ public class ViewFoodDatabaseActivity extends AppCompatActivity {
         foodDatabaseListView = findViewById(R.id.food_database_list);
         foodDatabaseTextView = findViewById(R.id.textView3);
 
-//        ArrayList<Food> foodDatabase = new ArrayList<>();
-//        FoodAdapter foodAdapter = new FoodAdapter(this, foodDatabase);
-
-        displayDatabaseInfo();
+        displayFoodDatabase();
 
     }
 
@@ -46,11 +47,14 @@ public class ViewFoodDatabaseActivity extends AppCompatActivity {
     }
 
 
-    private void displayDatabaseInfo() {
+    private void displayFoodDatabase() {
 
         mDbHelper = new FoodTrackerDbHelper(this);
         db = mDbHelper.getReadableDatabase();
-//        foodDisplay.setAdapter(foodAdapter);
+//        foodDatabaseListView.setAdapter(foodAdapter);
+
+//        foodDatabase = new ArrayList<>();
+//        foodAdapter = new FoodAdapter(this, foodDatabase);
 
         String[] columns = {
                 FoodTrackerContract.FoodTrackerEntry._ID,
@@ -60,9 +64,9 @@ public class ViewFoodDatabaseActivity extends AppCompatActivity {
         };
 
         String sortOrder =
-                FoodTrackerContract.FoodTrackerEntry.KEY_NAME + " DESC";
+                FoodTrackerContract.FoodTrackerEntry._ID + " ASC";
 
-        Cursor cursor = db.query(
+        cursor = db.query(
                 FoodTrackerContract.FoodTrackerEntry.TABLE_FOOD_AND_DRINKS,
                 columns,
                 null,
@@ -72,19 +76,21 @@ public class ViewFoodDatabaseActivity extends AppCompatActivity {
                 sortOrder
         );
 
+        foodCursorAdapter = new FoodCursorAdapter(this, cursor);
+        foodDatabaseListView.setAdapter(foodCursorAdapter);
 
-        try {
-            foodDatabaseTextView.setText(FoodTrackerContract.FoodTrackerEntry._ID + ": " + FoodTrackerContract.FoodTrackerEntry.KEY_NAME + "\n");
-            int idColumnIndex = cursor.getColumnIndex(FoodTrackerContract.FoodTrackerEntry._ID);
-            int nameColumnIndex = cursor.getColumnIndex(FoodTrackerContract.FoodTrackerEntry.KEY_NAME);
-            while (cursor.moveToNext()) {
-                int currentID = cursor.getInt(idColumnIndex);
-                String currentName = cursor.getString(nameColumnIndex);
-                foodDatabaseTextView.append(("\n" + currentID + ": " + currentName));
-            }
-        } finally {
-            cursor.close();
-        }
+//        try {
+//            foodDatabaseTextView.setText(FoodTrackerContract.FoodTrackerEntry._ID + ": " + FoodTrackerContract.FoodTrackerEntry.KEY_NAME + "\n");
+//            int idColumnIndex = cursor.getColumnIndex(FoodTrackerContract.FoodTrackerEntry._ID);
+//            int nameColumnIndex = cursor.getColumnIndex(FoodTrackerContract.FoodTrackerEntry.KEY_NAME);
+//            while (cursor.moveToNext()) {
+//                int currentID = cursor.getInt(idColumnIndex);
+//                String currentName = cursor.getString(nameColumnIndex);
+//                foodDatabaseTextView.append(("\n" + currentID + ": " + currentName));
+//            }
+//        } finally {
+//            cursor.close();
+//        }
 
     }
 

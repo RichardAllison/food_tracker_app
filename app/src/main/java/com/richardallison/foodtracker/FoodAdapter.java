@@ -18,19 +18,19 @@ public class FoodAdapter extends ArrayAdapter<Food> {
     @Override
     public View getView(int position, View listItemView, ViewGroup parent) {
         if (listItemView == null){
-            listItemView = LayoutInflater.from(getContext()).inflate(R.layout.food_item, parent, false);
+            listItemView = LayoutInflater.from(getContext()).inflate(R.layout.item_food, parent, false);
         }
 
         Food currentFood = getItem(position);
 
         TextView name = listItemView.findViewById(R.id.name);
-        name.setText(currentFood.getName().toString());
+        name.setText(currentFood.getName());
 
         TextView type = listItemView.findViewById(R.id.type);
         type.setText(currentFood.getType());
 
         TextView brand = listItemView.findViewById(R.id.brand);
-        brand.setText(currentFood.getBrand().toString());
+        brand.setText(currentFood.getBrand());
 
         return listItemView;
     }
