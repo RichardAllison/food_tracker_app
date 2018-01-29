@@ -12,6 +12,7 @@ import android.widget.Button;
 import android.widget.ListView;
 
 import com.richardallison.foodtracker.data.FoodTrackerContract;
+import com.richardallison.foodtracker.data.FoodTrackerContract.FoodTrackerEntry;
 import com.richardallison.foodtracker.data.FoodTrackerDbHelper;
 
 public class ViewAllRecordsActivity extends AppCompatActivity {
@@ -45,25 +46,33 @@ public class ViewAllRecordsActivity extends AppCompatActivity {
 
         mDbHelper = new FoodTrackerDbHelper(this);
         db = mDbHelper.getReadableDatabase();
+        String records = FoodTrackerEntry.TABLE_RECORDS;
+        String foodAndDrinks = FoodTrackerEntry.TABLE_FOOD_AND_DRINKS;
 
         String[] columns = {
-                FoodTrackerContract.FoodTrackerEntry._ID,
-                FoodTrackerContract.FoodTrackerEntry.KEY_DATE,
-                FoodTrackerContract.FoodTrackerEntry.KEY_FD_ID,
-                FoodTrackerContract.FoodTrackerEntry.KEY_MEAL_TIME
+                FoodTrackerEntry.TABLE_RECORDS + "." + FoodTrackerEntry._ID,
+                FoodTrackerEntry.KEY_DATE,
+                FoodTrackerEntry.KEY_FD_ID,
+                FoodTrackerEntry.KEY_MEAL_TIME,
+                FoodTrackerEntry.KEY_NAME
         };
 
-        String sortOrder =
-                FoodTrackerContract.FoodTrackerEntry._ID + " ASC";
+//        String sortOrder =
+//                FoodTrackerEntry._ID + " ASC";
+
+
+        String table = records + " inner join " + foodAndDrinks
+                + " on " + records + "." + FoodTrackerEntry.KEY_FD_ID
+                + " = " + foodAndDrinks + "." + FoodTrackerEntry._ID;
 
         cursor = db.query(
-                FoodTrackerContract.FoodTrackerEntry.TABLE_RECORDS,
+                table,
                 columns,
                 null,
                 null,
                 null,
                 null,
-                sortOrder
+                null
         );
 
         recordCursorAdapter = new RecordCursorAdapter(this, cursor);

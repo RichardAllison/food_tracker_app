@@ -3,6 +3,7 @@ package com.richardallison.foodtracker;
 import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,6 +11,7 @@ import android.widget.CursorAdapter;
 import android.widget.TextView;
 
 import com.richardallison.foodtracker.data.FoodTrackerContract;
+import com.richardallison.foodtracker.data.FoodTrackerDbHelper;
 
 public class RecordCursorAdapter extends CursorAdapter {
     public RecordCursorAdapter(Context context, Cursor cursor) {
@@ -24,18 +26,19 @@ public class RecordCursorAdapter extends CursorAdapter {
     @Override
     public void bindView(View view, Context context, Cursor cursor) {
 
-//        view.setTag(getItem(cursor.getPosition()));
+        TextView date = view.findViewById(R.id.food_record_date);
+        date.setText(cursor.getString(cursor.getColumnIndexOrThrow(FoodTrackerContract.FoodTrackerEntry.KEY_DATE)));
 
-        TextView name = view.findViewById(R.id.food_record_date);
-        name.setText(cursor.getString(cursor.getColumnIndexOrThrow(FoodTrackerContract.FoodTrackerEntry.KEY_DATE)));
+        TextView food = view.findViewById(R.id.food_record_food_name);
+        food.setText(cursor.getString(cursor.getColumnIndexOrThrow(FoodTrackerContract.FoodTrackerEntry.KEY_NAME)));
 
-        TextView type = view.findViewById(R.id.food_record_food_name);
-        type.setText(cursor.getString(cursor.getColumnIndexOrThrow(FoodTrackerContract.FoodTrackerEntry.KEY_FD_ID)));
-
-        TextView brand = view.findViewById(R.id.food_record_mealtime);
-        brand.setText(cursor.getString(cursor.getColumnIndexOrThrow(FoodTrackerContract.FoodTrackerEntry.KEY_MEAL_TIME)));
+        TextView mealTime = view.findViewById(R.id.food_record_mealtime);
+        mealTime.setText(cursor.getString(cursor.getColumnIndexOrThrow(FoodTrackerContract.FoodTrackerEntry.KEY_MEAL_TIME)));
 
     }
+
+
+
 
 }
 

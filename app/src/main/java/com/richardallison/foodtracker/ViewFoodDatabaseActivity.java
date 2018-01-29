@@ -62,8 +62,8 @@ public class ViewFoodDatabaseActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    private void displayFoodDatabase() {
 
+    private void displayFoodDatabase() {
         mDbHelper = new FoodTrackerDbHelper(this);
         db = mDbHelper.getReadableDatabase();
 
