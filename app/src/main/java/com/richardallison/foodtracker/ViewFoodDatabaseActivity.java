@@ -28,7 +28,6 @@ public class ViewFoodDatabaseActivity extends AppCompatActivity {
 
     Button createFoodButton;
     ListView foodDatabaseListView;
-//    View emptyView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,9 +41,9 @@ public class ViewFoodDatabaseActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Cursor foodItemCursor = (Cursor) parent.getItemAtPosition(position);
-                Long iD = foodItemCursor.getLong(foodItemCursor.getColumnIndex("_id"));
-                String name = foodItemCursor.getString(foodItemCursor.getColumnIndex("name"));
-                String brand = foodItemCursor.getString(foodItemCursor.getColumnIndex("brand"));
+                Long iD = foodItemCursor.getLong(foodItemCursor.getColumnIndex(FoodTrackerContract.FoodTrackerEntry._ID));
+                String name = foodItemCursor.getString(foodItemCursor.getColumnIndex(FoodTrackerContract.FoodTrackerEntry.KEY_NAME));
+                String brand = foodItemCursor.getString(foodItemCursor.getColumnIndex(FoodTrackerContract.FoodTrackerEntry.KEY_BRAND));
                 Food food = new Food(name, brand);
                 food.setID(iD);
 
@@ -58,27 +57,10 @@ public class ViewFoodDatabaseActivity extends AppCompatActivity {
 
     }
 
-
-
-
     public void onCreateFoodButtonClicked(View button) {
         Intent intent = new Intent(this, CreateFoodActivity.class);
         startActivity(intent);
     }
-
-//    public void onListItemClick(View listItem) {
-
-//        Cursor foodItemCursor = (Cursor) listItem.getTag();
-//        Long id = foodItemCursor.getLong(foodItemCursor.getColumnIndex("_id"));
-//        String name = foodItemCursor.getString(foodItemCursor.getColumnIndex("name"));
-//        String brand = foodItemCursor.getString(foodItemCursor.getColumnIndex("brand"));
-//        Food food = new Food(name, brand);
-//        food.setID(id);
-//
-//        Intent intent = new Intent(this, CreateRecordActivity.class);
-//        intent.putExtra("food", food);
-//        startActivity(intent);
-//    }
 
     private void displayFoodDatabase() {
 
@@ -108,29 +90,7 @@ public class ViewFoodDatabaseActivity extends AppCompatActivity {
         foodCursorAdapter = new FoodCursorAdapter(this, cursor);
         foodDatabaseListView.setAdapter(foodCursorAdapter);
 
-//        emptyView = findViewById(R.id.empty_view);
-//        foodDatabaseListView.setEmptyView(emptyView);
     }
-
-
-
-
-//    public void onListItemClick(ListView listView, View view, int position, long id) {
-//        Intent intent = new Intent();
-//        intent.putExtra("Food", cursor.getPosition());
-//    }
-
-
-
-
-//    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-
-//        Intent intent = new Intent(ViewFoodDatabaseActivity.this, CreateFoodActivity.class);
-//
-//        Uri currentFoodEntryUri = ContentUris.withAppendedId(FoodTrackerContract.FoodTrackerEntry.CONTENT_URI, id);
-//
-//        intent.setData(currentFoodEntryUri);
-//    }
 
 }
 

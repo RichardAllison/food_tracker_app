@@ -32,6 +32,10 @@ public class Food implements Consumable, Serializable {
         this.brand = brand;
     }
 
+    public long getID() {
+        return this.id;
+    }
+
     public String getName() {
         return this.name;
     }
@@ -151,7 +155,7 @@ public class Food implements Consumable, Serializable {
     public void setSugar(int sugar) {
         this.sugar = sugar;
     }
-    
+
     public void setID(long id) {
         this.id = id;
     }

@@ -6,6 +6,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -21,8 +22,7 @@ public class CreateFoodActivity extends AppCompatActivity {
     EditText nameInput;
     EditText typeInput;
     EditText brandInput;
-
-//    private Uri currentFoodEntryUri;
+//    private boolean mFoodHasChanged = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,5 +64,13 @@ public class CreateFoodActivity extends AppCompatActivity {
             startActivity(intent);
         }
     }
+
+//    private View.OnTouchListener mTouchListener = new View.OnTouchListener() {
+//        @Override
+//        public boolean onTouch(View view, MotionEvent motionEvent) {
+//            mFoodHasChanged = true;
+//            return false;
+//        }
+//    };
 
 }

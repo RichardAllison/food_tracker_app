@@ -19,11 +19,12 @@ public class CreateRecordActivity extends AppCompatActivity {
 
     SQLiteDatabase db;
     Button saveRecordButton;
+    Button selectFoodButton;
     TextView recordFoodItem;
-    EditText recordFoodInput;
     EditText recordDateInput;
     EditText recordMealtimeInput;
     EditText recordPortionSizeInput;
+    Food food;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,28 +34,35 @@ public class CreateRecordActivity extends AppCompatActivity {
         FoodTrackerDbHelper mDbHelper = new FoodTrackerDbHelper(getApplicationContext());
         db = mDbHelper.getWritableDatabase();
         saveRecordButton = findViewById(R.id.save_record_button);
+        selectFoodButton = findViewById(R.id.record_select_food_button);
         recordFoodItem = findViewById(R.id.record_food_item);
-        recordFoodInput = findViewById(R.id.record_food_input);
         recordDateInput = findViewById(R.id.record_date_input);
         recordMealtimeInput = findViewById(R.id.record_mealtime_input);
         recordPortionSizeInput = findViewById(R.id.record_portion_size_input);
 
         Intent intent = getIntent();
-        Food food = (Food) intent.getSerializableExtra("food");
-        recordFoodItem.setText(food.getName());
+        food = (Food) intent.getSerializableExtra("food");
+        if (food != null) {
+            recordFoodItem.setText(food.getName());
+        }
+    }
+
+    public void onSelectFoodButtonClicked(View button) {
+        Intent intent = new Intent(this, ViewFoodDatabaseActivity.class);
+        startActivity(intent);
     }
 
     public void onSaveRecordButtonClicked(View button) {
-        if (recordFoodInput.getText().length() == 0) return;
+        if (food == null) return;
 //        String food = recordFoodInput.getText().toString().trim();
-        String food = recordFoodInput.getText().toString().trim();
+
         String date = recordDateInput.getText().toString().trim();
         String mealtime = recordMealtimeInput.getText().toString().trim();
         String portion = recordPortionSizeInput.getText().toString().trim();
 //        Integer.parseInt("1")
 
         ContentValues contentValues = new ContentValues();
-        contentValues.put(FoodTrackerContract.FoodTrackerEntry.KEY_FD_ID, food);
+        contentValues.put(FoodTrackerContract.FoodTrackerEntry.KEY_FD_ID, food.getID());
         contentValues.put(FoodTrackerContract.FoodTrackerEntry.KEY_DATE, date);
         contentValues.put(FoodTrackerContract.FoodTrackerEntry.KEY_MEAL_TIME, mealtime);
         contentValues.put(FoodTrackerContract.FoodTrackerEntry.KEY_PORTION_SIZE, portion);
@@ -62,18 +70,12 @@ public class CreateRecordActivity extends AppCompatActivity {
 
         long newRowId = db.insert(FoodTrackerContract.FoodTrackerEntry.TABLE_RECORDS, null, contentValues);
 
-        Toast.makeText(this, food + " has been added to records", Toast.LENGTH_LONG).show();
 
-        Intent intent = new Intent(this, CreateRecordActivity.class);
-        if (intent.resolveActivity(getPackageManager()) != null) {
-            startActivity(intent);
-        }
+        Toast.makeText(this, food.getName() + " has been added to records", Toast.LENGTH_LONG).show();
+
+//        Intent intent = new Intent(this, CreateRecordActivity.class);
+//        if (intent.resolveActivity(getPackageManager()) != null) {
+//            startActivity(intent);
+//        }
     }
 }
-
-
-
-
-
-
-

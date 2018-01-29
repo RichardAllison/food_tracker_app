@@ -7,39 +7,14 @@
     tools:context="com.richardallison.foodtracker.CreateRecordActivity">
 
     <TextView
-        android:id="@+id/record_food_label"
-        android:layout_width="63dp"
-        android:layout_height="30dp"
-        android:layout_marginStart="40dp"
-        android:layout_marginTop="16dp"
-        android:text="Food:"
-        android:visibility="invisible"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <EditText
-        android:id="@+id/record_food_input"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="16dp"
-        android:ems="10"
-        android:inputType="textCapWords"
-        android:visibility="invisible"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/record_food_label"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
         android:id="@+id/record_date_label"
         android:layout_width="67dp"
         android:layout_height="27dp"
         android:layout_marginStart="36dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="8dp"
         android:text="Date:"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/record_food_label" />
+        app:layout_constraintTop_toBottomOf="@+id/record_select_food_button" />
 
     <EditText
         android:id="@+id/record_date_input"
@@ -52,7 +27,7 @@
         android:inputType="textCapWords"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/record_date_label"
-        app:layout_constraintTop_toBottomOf="@+id/record_food_input" />
+        app:layout_constraintTop_toBottomOf="@+id/record_select_food_button" />
 
     <TextView
         android:id="@+id/record_mealtime_label"
@@ -124,6 +99,20 @@
         android:layout_marginTop="8dp"
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/record_select_food_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:onClick="onSelectFoodButtonClicked"
+        android:text="Select Food"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.983"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
