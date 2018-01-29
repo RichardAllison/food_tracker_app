@@ -8,8 +8,8 @@ public class FoodTrackerContract {
 
     public FoodTrackerContract() {}
 
-    private static final String CONTENT_AUTHORITY = "com.codeclan.example.foodtracker.app";
-    private static final Uri BASE_CONTENT_URI = Uri.parse("content://" + CONTENT_AUTHORITY);
+//    private static final String CONTENT_AUTHORITY = "com.codeclan.example.foodtracker.app";
+//    private static final Uri BASE_CONTENT_URI = Uri.parse("content://" + CONTENT_AUTHORITY);
 
     public static abstract class FoodTrackerEntry implements BaseColumns {
 
@@ -28,9 +28,9 @@ public class FoodTrackerContract {
         public static final String KEY_BRAND = "brand";
         public static final String KEY_CALORIES = "calories";
         public static final String KEY_CARBOHYDRATES = "carbohydrates";
-        public static final String KEY_FAT= "fat";
-        public static final String KEY_SATURATED_FAT= "saturated_fat";
-        public static final String KEY_TRANS_FAT= "trans_fat";
+        public static final String KEY_FAT = "fat";
+        public static final String KEY_SATURATED_FAT = "saturated_fat";
+        public static final String KEY_TRANS_FAT = "trans_fat";
         public static final String KEY_CHOLESTEROL = "cholesterol";
         public static final String KEY_PROTEIN = "protein";
         public static final String KEY_SODIUM = "sodium";

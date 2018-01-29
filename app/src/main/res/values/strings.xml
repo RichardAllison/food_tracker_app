@@ -6,4 +6,5 @@
     <string name="create_food">Create Food</string>
     <string name="user_records">User Records</string>
     <string name="new_record">New Record</string>
+    <string name="view_record">View Record</string>
 </resources>
