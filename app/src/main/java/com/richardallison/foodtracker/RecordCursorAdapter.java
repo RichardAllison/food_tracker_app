@@ -1,6 +1,7 @@
 package com.richardallison.foodtracker;
 
 import android.content.Context;
+import android.content.Intent;
 import android.database.Cursor;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -22,6 +23,8 @@ public class RecordCursorAdapter extends CursorAdapter {
 
     @Override
     public void bindView(View view, Context context, Cursor cursor) {
+
+//        view.setTag(getItem(cursor.getPosition()));
 
         TextView name = view.findViewById(R.id.food_record_date);
         name.setText(cursor.getString(cursor.getColumnIndexOrThrow(FoodTrackerContract.FoodTrackerEntry.KEY_DATE)));

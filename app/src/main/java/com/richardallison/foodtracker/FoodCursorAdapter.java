@@ -24,6 +24,8 @@ public class FoodCursorAdapter extends CursorAdapter {
     @Override
     public void bindView(View view, Context context, Cursor cursor) {
 
+        view.setTag(getItem(cursor.getPosition()));
+
         TextView name = view.findViewById(R.id.name);
         name.setText(cursor.getString(cursor.getColumnIndexOrThrow(FoodTrackerContract.FoodTrackerEntry.KEY_NAME)));
 

@@ -3,6 +3,7 @@ package com.richardallison.foodtracker;
 import android.content.ContentValues;
 import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
+import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -21,10 +22,18 @@ public class CreateFoodActivity extends AppCompatActivity {
     EditText typeInput;
     EditText brandInput;
 
+//    private Uri currentFoodEntryUri;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_food);
+
+//        setTitle(R.string.new_or_edit_title);
+//        Bundle extras = intent.getExtras();
+//        Intent intent = getIntent();
+
+
 
         FoodTrackerDbHelper mDbHelper = new FoodTrackerDbHelper(getApplicationContext());
         db = mDbHelper.getWritableDatabase();

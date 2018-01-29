@@ -1,15 +1,15 @@
 package com.richardallison.foodtracker;
 
-public class Food implements Consumable {
+import java.io.Serializable;
 
+public class Food implements Consumable, Serializable {
+
+    private long id;
     private String name;
     private String type;
     private String description;
     private String brand;
     private int servingSize;
-//    private ArrayList<Food> ingredients; //?
-
-    //nutritional information
     private int calories;
     private int glycemicIndex;
     private int carbohydrates;
@@ -150,6 +150,10 @@ public class Food implements Consumable {
 
     public void setSugar(int sugar) {
         this.sugar = sugar;
+    }
+    
+    public void setID(long id) {
+        this.id = id;
     }
 
 }

@@ -5,9 +5,11 @@ import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.richardallison.foodtracker.data.FoodTrackerContract;
@@ -17,6 +19,7 @@ public class CreateRecordActivity extends AppCompatActivity {
 
     SQLiteDatabase db;
     Button saveRecordButton;
+    TextView recordFoodItem;
     EditText recordFoodInput;
     EditText recordDateInput;
     EditText recordMealtimeInput;
@@ -30,14 +33,20 @@ public class CreateRecordActivity extends AppCompatActivity {
         FoodTrackerDbHelper mDbHelper = new FoodTrackerDbHelper(getApplicationContext());
         db = mDbHelper.getWritableDatabase();
         saveRecordButton = findViewById(R.id.save_record_button);
+        recordFoodItem = findViewById(R.id.record_food_item);
         recordFoodInput = findViewById(R.id.record_food_input);
         recordDateInput = findViewById(R.id.record_date_input);
         recordMealtimeInput = findViewById(R.id.record_mealtime_input);
         recordPortionSizeInput = findViewById(R.id.record_portion_size_input);
+
+        Intent intent = getIntent();
+        Food food = (Food) intent.getSerializableExtra("food");
+        recordFoodItem.setText(food.getName());
     }
 
     public void onSaveRecordButtonClicked(View button) {
         if (recordFoodInput.getText().length() == 0) return;
+//        String food = recordFoodInput.getText().toString().trim();
         String food = recordFoodInput.getText().toString().trim();
         String date = recordDateInput.getText().toString().trim();
         String mealtime = recordMealtimeInput.getText().toString().trim();
@@ -52,6 +61,7 @@ public class CreateRecordActivity extends AppCompatActivity {
 
 
         long newRowId = db.insert(FoodTrackerContract.FoodTrackerEntry.TABLE_RECORDS, null, contentValues);
+
         Toast.makeText(this, food + " has been added to records", Toast.LENGTH_LONG).show();
 
         Intent intent = new Intent(this, CreateRecordActivity.class);

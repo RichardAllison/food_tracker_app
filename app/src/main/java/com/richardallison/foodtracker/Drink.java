@@ -1,6 +1,8 @@
 package com.richardallison.foodtracker;
 
-public class Drink implements Consumable {
+import java.io.Serializable;
+
+public class Drink implements Consumable, Serializable {
     private String name;
     private String brand;
 //    private String type;
