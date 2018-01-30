@@ -43,15 +43,14 @@ public class ViewAllRecordsActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    public boolean onRecordDeleteButtonClicked(View button) {
+    public void onRecordDeleteButtonClicked(View button) {
         long id = (long) button.getTag();
-        boolean returnValue = removeRecord(id);
-        if (returnValue) {
+        boolean recordRemoved = removeRecord(id);
+        if (recordRemoved) {
             Toast.makeText(this, "Record deleted", Toast.LENGTH_LONG).show();
             Intent intent = new Intent(this, ViewAllRecordsActivity.class);
             startActivity(intent);
         }
-        return returnValue;
     }
 
     private void displayRecords() {

@@ -15,6 +15,7 @@ import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.richardallison.foodtracker.data.FoodTrackerContract;
 import com.richardallison.foodtracker.data.FoodTrackerDbHelper;
@@ -22,12 +23,12 @@ import com.richardallison.foodtracker.data.FoodTrackerDbHelper;
 public class ViewFoodDatabaseActivity extends AppCompatActivity {
 
     SQLiteDatabase db;
-    FoodTrackerDbHelper mDbHelper;
+    FoodTrackerDbHelper dbHelper;
     Cursor cursor;
 
     FoodCursorAdapter foodCursorAdapter;
 
-    FloatingActionButton createFoodButton;
+    Button createFoodButton;
     ListView foodDatabaseListView;
 
     @Override
@@ -64,9 +65,20 @@ public class ViewFoodDatabaseActivity extends AppCompatActivity {
     }
 
 
+    public void onDeleteFoodItemButtonClicked(View button) {
+        long id = (long) button.getTag();
+        boolean foodItemRemoved = removeFoodItem(id);
+        if (foodItemRemoved) {
+            Toast.makeText(this, "Record deleted", Toast.LENGTH_LONG).show();
+            Intent intent = new Intent(this, ViewFoodDatabaseActivity.class);
+            startActivity(intent);
+        }
+    }
+
+
     private void displayFoodDatabase() {
-        mDbHelper = new FoodTrackerDbHelper(this);
-        db = mDbHelper.getReadableDatabase();
+        dbHelper = new FoodTrackerDbHelper(this);
+        db = dbHelper.getReadableDatabase();
 
         String[] columns = {
                 FoodTrackerContract.FoodTrackerEntry._ID,
@@ -91,6 +103,12 @@ public class ViewFoodDatabaseActivity extends AppCompatActivity {
         foodCursorAdapter = new FoodCursorAdapter(this, cursor);
         foodDatabaseListView.setAdapter(foodCursorAdapter);
 
+    }
+
+    private boolean removeFoodItem(long id) {
+        return db.delete(FoodTrackerContract.FoodTrackerEntry.TABLE_FOOD_AND_DRINKS,
+                FoodTrackerContract.FoodTrackerEntry._ID + "=?",
+                new String[] {String.valueOf(id)}) > 0;
     }
 
 }

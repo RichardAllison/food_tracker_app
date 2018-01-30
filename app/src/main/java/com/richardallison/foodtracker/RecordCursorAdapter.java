@@ -28,6 +28,8 @@ public class RecordCursorAdapter extends CursorAdapter {
     public void bindView(View view, Context context, Cursor cursor) {
 
         Button deleteButton = view.findViewById(R.id.delete_record_button);
+        long id = cursor.getLong(cursor.getColumnIndexOrThrow(FoodTrackerContract.FoodTrackerEntry._ID));
+        deleteButton.setTag(id);
 
         TextView date = view.findViewById(R.id.food_record_date);
         date.setText(cursor.getString(cursor.getColumnIndexOrThrow(FoodTrackerContract.FoodTrackerEntry.KEY_DATE)));
@@ -38,8 +40,6 @@ public class RecordCursorAdapter extends CursorAdapter {
         TextView mealTime = view.findViewById(R.id.food_record_mealtime);
         mealTime.setText(cursor.getString(cursor.getColumnIndexOrThrow(FoodTrackerContract.FoodTrackerEntry.KEY_MEAL_TIME)));
 
-        long id = cursor.getLong(cursor.getColumnIndexOrThrow(FoodTrackerContract.FoodTrackerEntry._ID));
-        deleteButton.setTag(id);
     }
 
 
