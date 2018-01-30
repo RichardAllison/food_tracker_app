@@ -1,13 +1,16 @@
 package com.richardallison.foodtracker;
 
+import android.app.DatePickerDialog;
 import android.content.ContentValues;
 import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -15,16 +18,19 @@ import android.widget.Toast;
 import com.richardallison.foodtracker.data.FoodTrackerContract;
 import com.richardallison.foodtracker.data.FoodTrackerDbHelper;
 
+import java.util.Calendar;
+
 public class CreateRecordActivity extends AppCompatActivity {
 
     SQLiteDatabase db;
     Button saveRecordButton;
     Button selectFoodButton;
     TextView recordFoodItem;
-    EditText recordDateInput;
+    TextView recordDateInput;
     EditText recordMealtimeInput;
     EditText recordPortionSizeInput;
     Food food;
+    private DatePickerDialog.OnDateSetListener dateSetListener;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,6 +45,31 @@ public class CreateRecordActivity extends AppCompatActivity {
         recordDateInput = findViewById(R.id.record_date_input);
         recordMealtimeInput = findViewById(R.id.record_mealtime_input);
         recordPortionSizeInput = findViewById(R.id.record_portion_size_input);
+
+        recordDateInput.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Calendar calendar = Calendar.getInstance();
+                int year = calendar.get(Calendar.YEAR);
+                int month = calendar.get(Calendar.MONTH);
+                int day = calendar.get(Calendar.DAY_OF_MONTH);
+
+                DatePickerDialog datePickerDialog = new DatePickerDialog(CreateRecordActivity.this, dateSetListener, year, month, day);
+                datePickerDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.WHITE));
+//                datePickerDialog.getDatePicker().setCalendarViewShown(false);
+//                datePickerDialog.getDatePicker().setSpinnersShown(true);
+                datePickerDialog.show();
+            }
+        });
+
+        dateSetListener = new DatePickerDialog.OnDateSetListener() {
+
+            @Override
+            public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+                month +=1;
+                recordDateInput.setText(dayOfMonth + "/" + month + "/" + year);
+            }
+        };
 
         Intent intent = getIntent();
         food = (Food) intent.getSerializableExtra("food");
