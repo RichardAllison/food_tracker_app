@@ -54,7 +54,9 @@ public class CreateRecordActivity extends AppCompatActivity {
                 int month = calendar.get(Calendar.MONTH);
                 int day = calendar.get(Calendar.DAY_OF_MONTH);
 
+
                 DatePickerDialog datePickerDialog = new DatePickerDialog(CreateRecordActivity.this, dateSetListener, year, month, day);
+
                 datePickerDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.WHITE));
 //                datePickerDialog.getDatePicker().setCalendarViewShown(false);
 //                datePickerDialog.getDatePicker().setSpinnersShown(true);
