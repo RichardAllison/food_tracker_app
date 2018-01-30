@@ -22,10 +22,8 @@ import com.richardallison.foodtracker.data.FoodTrackerContract;
 import com.richardallison.foodtracker.data.FoodTrackerDbHelper;
 import android.widget.AdapterView.OnItemSelectedListener;
 
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Date;
 
 import static java.text.DateFormat.getDateInstance;
 
@@ -50,7 +48,7 @@ public class CreateRecordActivity extends AppCompatActivity {
 
         FoodTrackerDbHelper mDbHelper = new FoodTrackerDbHelper(getApplicationContext());
         db = mDbHelper.getWritableDatabase();
-        saveRecordButton = findViewById(R.id.save_record_button);
+        saveRecordButton = findViewById(R.id.record_save_button);
         selectFoodButton = findViewById(R.id.record_select_food_button);
         recordFoodItem = findViewById(R.id.record_food_item);
         recordDateInput = findViewById(R.id.record_date_input);
@@ -59,7 +57,7 @@ public class CreateRecordActivity extends AppCompatActivity {
 
 
         // Spinner
-        mealSpinner = findViewById(R.id.mealtime_spinner);
+        mealSpinner = findViewById(R.id.record_mealtime_spinner);
         mealSpinner.setOnItemSelectedListener(new OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -129,7 +127,7 @@ public class CreateRecordActivity extends AppCompatActivity {
 
         String date = recordDateInput.getText().toString().trim();
 //        String mealtime = recordMealtimeInput.getText().toString().trim();
-        String mealtime = ((Spinner)findViewById(R.id.mealtime_spinner)).getSelectedItem().toString();
+        String mealtime = ((Spinner)findViewById(R.id.record_mealtime_spinner)).getSelectedItem().toString();
         String portion = recordPortionSizeInput.getText().toString().trim();
 //        Integer.parseInt("1")
 

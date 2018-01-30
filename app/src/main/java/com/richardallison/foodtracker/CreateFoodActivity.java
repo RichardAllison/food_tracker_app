@@ -3,10 +3,8 @@ package com.richardallison.foodtracker;
 import android.content.ContentValues;
 import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
-import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -35,10 +33,10 @@ public class CreateFoodActivity extends AppCompatActivity {
 
         FoodTrackerDbHelper mDbHelper = new FoodTrackerDbHelper(getApplicationContext());
         db = mDbHelper.getWritableDatabase();
-        saveFoodButton = findViewById(R.id.save_food);
-        nameInput = findViewById(R.id.name_input);
-        typeInput = findViewById(R.id.type_input);
-        brandInput = findViewById(R.id.brand_input);
+        saveFoodButton = findViewById(R.id.food_save_button);
+        nameInput = findViewById(R.id.food_name_input);
+        typeInput = findViewById(R.id.food_type_input);
+        brandInput = findViewById(R.id.food_brand_input);
     }
 
     public void onSaveButtonClicked(View button) {

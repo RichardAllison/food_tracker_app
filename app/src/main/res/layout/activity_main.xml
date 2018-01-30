@@ -22,7 +22,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/view_records_button"
         android:layout_width="165dp"
         android:layout_height="57dp"
         android:layout_marginBottom="8dp"

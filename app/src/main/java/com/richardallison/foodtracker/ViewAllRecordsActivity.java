@@ -5,9 +5,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Toast;
@@ -32,7 +30,7 @@ public class ViewAllRecordsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_all_records);
 
-        createRecordButton = findViewById(R.id.add_record);
+        createRecordButton = findViewById(R.id.record_add_button);
         recordDatabaseListView = findViewById(R.id.record_database_list_view);
 
         displayRecords();
