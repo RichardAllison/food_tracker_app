@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.net.Uri;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -26,7 +27,7 @@ public class ViewFoodDatabaseActivity extends AppCompatActivity {
 
     FoodCursorAdapter foodCursorAdapter;
 
-    Button createFoodButton;
+    FloatingActionButton createFoodButton;
     ListView foodDatabaseListView;
 
     @Override

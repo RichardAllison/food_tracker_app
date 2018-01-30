@@ -33,8 +33,6 @@ public class CreateFoodActivity extends AppCompatActivity {
 //        Bundle extras = intent.getExtras();
 //        Intent intent = getIntent();
 
-
-
         FoodTrackerDbHelper mDbHelper = new FoodTrackerDbHelper(getApplicationContext());
         db = mDbHelper.getWritableDatabase();
         saveFoodButton = findViewById(R.id.save_food);
@@ -64,13 +62,5 @@ public class CreateFoodActivity extends AppCompatActivity {
             startActivity(intent);
         }
     }
-
-//    private View.OnTouchListener mTouchListener = new View.OnTouchListener() {
-//        @Override
-//        public boolean onTouch(View view, MotionEvent motionEvent) {
-//            mFoodHasChanged = true;
-//            return false;
-//        }
-//    };
 
 }

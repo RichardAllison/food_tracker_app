@@ -9,16 +9,21 @@ import android.graphics.drawable.ColorDrawable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.richardallison.foodtracker.data.FoodTrackerContract;
 import com.richardallison.foodtracker.data.FoodTrackerDbHelper;
+import android.widget.AdapterView.OnItemSelectedListener;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 
@@ -31,9 +36,11 @@ public class CreateRecordActivity extends AppCompatActivity {
     Button selectFoodButton;
     TextView recordFoodItem;
     TextView recordDateInput;
-    EditText recordMealtimeInput;
+//    EditText recordMealtimeInput;
     EditText recordPortionSizeInput;
     Food food;
+    Spinner mealSpinner;
+
     private DatePickerDialog.OnDateSetListener dateSetListener;
 
     @Override
@@ -47,9 +54,37 @@ public class CreateRecordActivity extends AppCompatActivity {
         selectFoodButton = findViewById(R.id.record_select_food_button);
         recordFoodItem = findViewById(R.id.record_food_item);
         recordDateInput = findViewById(R.id.record_date_input);
-        recordMealtimeInput = findViewById(R.id.record_mealtime_input);
+//        recordMealtimeInput = findViewById(R.id.record_mealtime_input);
         recordPortionSizeInput = findViewById(R.id.record_portion_size_input);
 
+
+        // Spinner
+        mealSpinner = findViewById(R.id.mealtime_spinner);
+        mealSpinner.setOnItemSelectedListener(new OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                String item = parent.getItemAtPosition(position).toString();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+
+        ArrayList<String> mealTimes = new ArrayList<>();
+        mealTimes.add("Breakfast");
+        mealTimes.add("Morning snack");
+        mealTimes.add("Lunch");
+        mealTimes.add("Afternoon snack");
+        mealTimes.add("Dinner");
+        mealTimes.add("Evening snack");
+
+        ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, mealTimes);
+        dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        mealSpinner.setAdapter(dataAdapter);
+
+        // date picker
         recordDateInput.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -58,12 +93,8 @@ public class CreateRecordActivity extends AppCompatActivity {
                 int month = calendar.get(Calendar.MONTH);
                 int day = calendar.get(Calendar.DAY_OF_MONTH);
 
-
                 DatePickerDialog datePickerDialog = new DatePickerDialog(CreateRecordActivity.this, dateSetListener, year, month, day);
-
                 datePickerDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.WHITE));
-//                datePickerDialog.getDatePicker().setCalendarViewShown(false);
-//                datePickerDialog.getDatePicker().setSpinnersShown(true);
                 datePickerDialog.show();
             }
         });
@@ -72,7 +103,7 @@ public class CreateRecordActivity extends AppCompatActivity {
 
             @Override
             public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
-                month +=1;
+                month += 1;
                 String date = dayOfMonth + "/" + month + "/" + year;
                 recordDateInput.setText(date);
             }
@@ -80,6 +111,7 @@ public class CreateRecordActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
         food = (Food) intent.getSerializableExtra("food");
+
         if (food != null) {
             recordFoodItem.setText(food.getName());
         }
@@ -96,7 +128,8 @@ public class CreateRecordActivity extends AppCompatActivity {
 //        String food = recordFoodInput.getText().toString().trim();
 
         String date = recordDateInput.getText().toString().trim();
-        String mealtime = recordMealtimeInput.getText().toString().trim();
+//        String mealtime = recordMealtimeInput.getText().toString().trim();
+        String mealtime = ((Spinner)findViewById(R.id.mealtime_spinner)).getSelectedItem().toString();
         String portion = recordPortionSizeInput.getText().toString().trim();
 //        Integer.parseInt("1")
 
@@ -106,9 +139,7 @@ public class CreateRecordActivity extends AppCompatActivity {
         contentValues.put(FoodTrackerContract.FoodTrackerEntry.KEY_MEAL_TIME, mealtime);
         contentValues.put(FoodTrackerContract.FoodTrackerEntry.KEY_PORTION_SIZE, portion);
 
-
         long newRowId = db.insert(FoodTrackerContract.FoodTrackerEntry.TABLE_RECORDS, null, contentValues);
-
 
         Toast.makeText(this, food.getName() + " has been added to records", Toast.LENGTH_LONG).show();
 

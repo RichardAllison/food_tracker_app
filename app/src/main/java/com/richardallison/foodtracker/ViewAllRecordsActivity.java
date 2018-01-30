@@ -16,8 +16,6 @@ import com.richardallison.foodtracker.data.FoodTrackerContract;
 import com.richardallison.foodtracker.data.FoodTrackerContract.FoodTrackerEntry;
 import com.richardallison.foodtracker.data.FoodTrackerDbHelper;
 
-import static java.lang.String.valueOf;
-
 public class ViewAllRecordsActivity extends AppCompatActivity {
 
     SQLiteDatabase db;
@@ -40,7 +38,6 @@ public class ViewAllRecordsActivity extends AppCompatActivity {
         displayRecords();
     }
 
-
     public void onCreateRecordButtonClicked(View button) {
         Intent intent = new Intent(this, CreateRecordActivity.class);
         startActivity(intent);
@@ -49,9 +46,11 @@ public class ViewAllRecordsActivity extends AppCompatActivity {
     public boolean onRecordDeleteButtonClicked(View button) {
         long id = (long) button.getTag();
         boolean returnValue = removeRecord(id);
-        Toast.makeText(this, valueOf(returnValue), Toast.LENGTH_LONG).show();
-        Intent intent = new Intent(this, ViewAllRecordsActivity.class);
-        startActivity(intent);
+        if (returnValue) {
+            Toast.makeText(this, "Record deleted", Toast.LENGTH_LONG).show();
+            Intent intent = new Intent(this, ViewAllRecordsActivity.class);
+            startActivity(intent);
+        }
         return returnValue;
     }
 
@@ -71,8 +70,7 @@ public class ViewAllRecordsActivity extends AppCompatActivity {
         };
 
 //        String sortOrder =
-//                FoodTrackerEntry._ID + " ASC";
-
+//                FoodTrackerEntry.KEY_NAME + " ASC";
 
         String table = records + " inner join " + foodAndDrinks
                 + " on " + records + "." + FoodTrackerEntry.KEY_FD_ID
@@ -92,7 +90,6 @@ public class ViewAllRecordsActivity extends AppCompatActivity {
         recordDatabaseListView.setAdapter(recordCursorAdapter);
 //        emptyView = findViewById(R.id.empty_view);
 //        recordDatabaseListView.setEmptyView(emptyView);
-
     }
 
     public void onListItemClick(View listItem) {
