@@ -18,7 +18,11 @@ import android.widget.Toast;
 import com.richardallison.foodtracker.data.FoodTrackerContract;
 import com.richardallison.foodtracker.data.FoodTrackerDbHelper;
 
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
+
+import static java.text.DateFormat.getDateInstance;
 
 public class CreateRecordActivity extends AppCompatActivity {
 
@@ -69,7 +73,8 @@ public class CreateRecordActivity extends AppCompatActivity {
             @Override
             public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
                 month +=1;
-                recordDateInput.setText(dayOfMonth + "/" + month + "/" + year);
+                String date = dayOfMonth + "/" + month + "/" + year;
+                recordDateInput.setText(date);
             }
         };
 
@@ -87,6 +92,7 @@ public class CreateRecordActivity extends AppCompatActivity {
 
     public void onSaveRecordButtonClicked(View button) {
         if (food == null) return;
+        if (recordDateInput.getText().toString().length() == 0) return;
 //        String food = recordFoodInput.getText().toString().trim();
 
         String date = recordDateInput.getText().toString().trim();

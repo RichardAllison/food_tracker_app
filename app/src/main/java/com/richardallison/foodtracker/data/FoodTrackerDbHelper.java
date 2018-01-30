@@ -64,7 +64,7 @@ public class FoodTrackerDbHelper extends SQLiteOpenHelper {
     private static final String SQL_CREATE_TABLE_RECORD =
             "CREATE TABLE IF NOT EXISTS " + TABLE_RECORDS + "("
                     + _ID + " INTEGER PRIMARY KEY,"
-                    + KEY_DATE + " TEXT,"
+                    + KEY_DATE + " TEXT NOT NULL,"
                     + KEY_MEAL_TIME + " INTEGER,"
                     + KEY_PORTION_SIZE + " INTEGER,"
                     + KEY_FD_ID + " INTEGER,"

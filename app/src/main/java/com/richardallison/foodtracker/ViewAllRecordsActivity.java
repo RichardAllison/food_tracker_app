@@ -10,10 +10,13 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.richardallison.foodtracker.data.FoodTrackerContract;
 import com.richardallison.foodtracker.data.FoodTrackerContract.FoodTrackerEntry;
 import com.richardallison.foodtracker.data.FoodTrackerDbHelper;
+
+import static java.lang.String.valueOf;
 
 public class ViewAllRecordsActivity extends AppCompatActivity {
 
@@ -37,9 +40,19 @@ public class ViewAllRecordsActivity extends AppCompatActivity {
         displayRecords();
     }
 
+
     public void onCreateRecordButtonClicked(View button) {
         Intent intent = new Intent(this, CreateRecordActivity.class);
         startActivity(intent);
+    }
+
+    public boolean onRecordDeleteButtonClicked(View button) {
+        long id = (long) button.getTag();
+        boolean returnValue = removeRecord(id);
+        Toast.makeText(this, valueOf(returnValue), Toast.LENGTH_LONG).show();
+        Intent intent = new Intent(this, ViewAllRecordsActivity.class);
+        startActivity(intent);
+        return returnValue;
     }
 
     private void displayRecords() {
@@ -89,7 +102,12 @@ public class ViewAllRecordsActivity extends AppCompatActivity {
 //        intent.putExtra("record", record);
         startActivity(intent);
     }
+
+    private boolean removeRecord(long id) {
+        return db.delete(FoodTrackerContract.FoodTrackerEntry.TABLE_RECORDS,
+                FoodTrackerContract.FoodTrackerEntry._ID + "=?",
+                new String[] {String.valueOf(id)}) > 0;
+    }
+
 }
-
-
 
