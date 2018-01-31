@@ -72,7 +72,7 @@ public class RecordOperations {
 //                cursor.getInt(1),
                 cursor.getString(1),
                 cursor.getInt(2),
-                cursor.getInt(3),
+                cursor.getString(3),
                 cursor.getString(4)
         );
 
@@ -102,7 +102,7 @@ public class RecordOperations {
                 record.setID(cursor.getLong(cursor.getColumnIndex(FoodTrackerEntry._ID)));
                 record.setDateID(cursor.getString(cursor.getColumnIndex(FoodTrackerEntry.KEY_DATE)));
                 record.setItemID(cursor.getInt(cursor.getColumnIndex(FoodTrackerEntry.KEY_FD_ID)));
-                record.setMealtime(cursor.getInt(cursor.getColumnIndex(FoodTrackerEntry.KEY_MEAL_TIME)));
+                record.setMealtime(cursor.getString(cursor.getColumnIndex(FoodTrackerEntry.KEY_MEAL_TIME)));
                 record.setPortionSize(cursor.getString(cursor.getColumnIndex(FoodTrackerEntry.KEY_PORTION_SIZE)));
                 records.add(record);
             }

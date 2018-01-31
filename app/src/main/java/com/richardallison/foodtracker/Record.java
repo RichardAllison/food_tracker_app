@@ -13,8 +13,9 @@ public class Record implements Serializable {
     long id;
 //    private int dateID;
     private String date;
-    private int itemID;
-    private int mealtime;
+    private long itemID;
+//    private int mealtime;
+    private String mealtime;
     private String portionSize;
     private String foodName;
 
@@ -22,7 +23,14 @@ public class Record implements Serializable {
 
     }
 
-    public Record(long id, String date, int itemID, int meal, String portionSize) { //int dateId,
+    public Record(String date, long itemID, String meal, String portionSize) { //int dateId,
+        this.date = date;
+        this.itemID = itemID;
+        this.mealtime = meal;
+        this.portionSize = portionSize;
+    }
+
+    public Record(long id, String date, long itemID, String meal, String portionSize) { //int dateId,
         this.id = id;
 //        this.dateID = dateID;
         this.date = date;
@@ -43,11 +51,11 @@ public class Record implements Serializable {
         return this.date;
     }
 
-    public int getItemID(){
+    public long getItemID(){
         return this.itemID;
     }
 
-    public int getMealtime(){
+    public String getMealtime(){
         return this.mealtime;
     }
 
@@ -74,7 +82,7 @@ public class Record implements Serializable {
         this.itemID = itemID;
     }
 
-    public void setMealtime(int mealtime){
+    public void setMealtime(String mealtime){
         this.mealtime = mealtime;
     }
 

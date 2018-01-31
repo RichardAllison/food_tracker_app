@@ -20,6 +20,7 @@ import android.widget.Toast;
 
 import com.richardallison.foodtracker.data.FoodTrackerContract;
 import com.richardallison.foodtracker.data.FoodTrackerDbHelper;
+import com.richardallison.foodtracker.data.RecordOperations;
 
 import android.widget.AdapterView.OnItemSelectedListener;
 
@@ -130,13 +131,12 @@ public class CreateRecordActivity extends AppCompatActivity {
         String mealtime = ((Spinner)findViewById(R.id.record_mealtime_spinner)).getSelectedItem().toString();
         String portion = recordPortionSizeInput.getText().toString().trim();
 
-        ContentValues contentValues = new ContentValues();
-        contentValues.put(FoodTrackerContract.FoodTrackerEntry.KEY_FD_ID, food.getID());
-        contentValues.put(FoodTrackerContract.FoodTrackerEntry.KEY_DATE, date);
-        contentValues.put(FoodTrackerContract.FoodTrackerEntry.KEY_MEAL_TIME, mealtime);
-        contentValues.put(FoodTrackerContract.FoodTrackerEntry.KEY_PORTION_SIZE, portion);
+        Record record = new Record(date, food.getID(), mealtime, portion);
 
-        long newRowId = db.insert(FoodTrackerContract.FoodTrackerEntry.TABLE_RECORDS, null, contentValues);
+        RecordOperations recordOperations = new RecordOperations(this);
+        recordOperations.open();
+        Record newRecord = recordOperations.addRecord(record);
+        recordOperations.close();
 
         Toast.makeText(this, food.getName() + " has been added to records", Toast.LENGTH_LONG).show();
 
