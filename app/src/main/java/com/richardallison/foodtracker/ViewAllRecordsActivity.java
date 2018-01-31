@@ -97,6 +97,8 @@ public class ViewAllRecordsActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+
+
     private boolean removeRecord(long id) {
         return db.delete(FoodTrackerContract.FoodTrackerEntry.TABLE_RECORDS,
                 FoodTrackerContract.FoodTrackerEntry._ID + "=?",

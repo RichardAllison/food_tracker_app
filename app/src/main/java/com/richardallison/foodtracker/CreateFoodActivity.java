@@ -94,7 +94,7 @@ public class CreateFoodActivity extends AppCompatActivity {
         caloriesLabel.setVisibility(View.VISIBLE);
         caloriesInput.setVisibility(View.VISIBLE);
         fatLabel.setVisibility(View.VISIBLE);
-        fatLabel.setVisibility(View.VISIBLE);
+        fatInput.setVisibility(View.VISIBLE);
         carbsLabel.setVisibility(View.VISIBLE);
         carbsInput.setVisibility(View.VISIBLE);
         proteinLabel.setVisibility(View.VISIBLE);
