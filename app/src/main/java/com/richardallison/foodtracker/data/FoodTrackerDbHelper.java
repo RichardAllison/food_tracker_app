@@ -45,6 +45,7 @@ public class FoodTrackerDbHelper extends SQLiteOpenHelper {
                     + KEY_TYPE + " TEXT,"
                     + KEY_DESCRIPTION + " TEXT,"
                     + KEY_BRAND + " TEXT,"
+                    + KEY_SERVING_SIZE + " TEXT,"
                     + KEY_CALORIES + " INTEGER,"
                     + KEY_CARBOHYDRATES + " INTEGER,"
                     + KEY_FAT + " INTEGER,"

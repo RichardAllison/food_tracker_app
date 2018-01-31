@@ -2,12 +2,21 @@ package com.richardallison.foodtracker;
 
 public enum MealTime {
 
-    MORNING_MEAL,
-    MORNING_SNACK,
-    AFTERNOON_MEAL,
-    AFTERNOON_SNACK,
-    EVENING_MEAL,
-    EVENING_SNACK,
-    OTHER;
+    BREAKFAST(0),
+    MORNING_SNACK(1),
+    LUNCH(2),
+    AFTERNOON_SNACK(3),
+    DINNER(4),
+    EVENING_SNACK(5);
+
+    private final int value;
+
+    MealTime(int value){
+        this.value = value;
+    }
+
+    public int getValue() {
+        return this.value;
+    }
 
 }

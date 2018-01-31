@@ -23,13 +23,48 @@ public class Food implements Consumable, Serializable {
     private int fibre;
     private int sugar;
 
-    public Food(String name) {
-        this.name = name;
-    }
-
+    public Food() {}
     public Food(String name, String brand) {
         this.name = name;
         this.brand = brand;
+    }
+    public Food(long id,
+            String name,
+            String type,
+            String description,
+            String brand,
+            int servingSize,
+            int calories,
+            int glycemicIndex,
+            int carbohydrates,
+            int fat,
+            int saturatedFat,
+            int transFat,
+            int cholesterol,
+            int protein,
+            int sodium,
+            int potassium,
+            int fibre,
+            int sugar) {
+
+        this.name = name;
+        this.brand = brand;
+        this.type = type;
+        this.description = description;
+        this.brand = brand;
+        this.servingSize = servingSize;
+        this.calories = calories;
+        this.glycemicIndex = glycemicIndex;
+        this.carbohydrates = carbohydrates;
+        this.fat = fat;
+        this.saturatedFat = saturatedFat;
+        this.transFat = transFat;
+        this.cholesterol = cholesterol;
+        this.protein = protein;
+        this.sodium = sodium;
+        this.potassium = potassium;
+        this.fibre = fibre;
+        this.sugar = sugar;
     }
 
     public long getID() {

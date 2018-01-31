@@ -20,6 +20,7 @@ import android.widget.Toast;
 
 import com.richardallison.foodtracker.data.FoodTrackerContract;
 import com.richardallison.foodtracker.data.FoodTrackerDbHelper;
+
 import android.widget.AdapterView.OnItemSelectedListener;
 
 import java.util.ArrayList;
@@ -45,6 +46,9 @@ public class CreateRecordActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_record);
+
+        Intent intent = getIntent();
+        food = (Food) intent.getSerializableExtra("food");
 
         FoodTrackerDbHelper mDbHelper = new FoodTrackerDbHelper(getApplicationContext());
         db = mDbHelper.getWritableDatabase();
@@ -107,8 +111,6 @@ public class CreateRecordActivity extends AppCompatActivity {
             }
         };
 
-        Intent intent = getIntent();
-        food = (Food) intent.getSerializableExtra("food");
 
         if (food != null) {
             recordFoodItem.setText(food.getName());
@@ -123,13 +125,10 @@ public class CreateRecordActivity extends AppCompatActivity {
     public void onSaveRecordButtonClicked(View button) {
         if (food == null) return;
         if (recordDateInput.getText().toString().length() == 0) return;
-//        String food = recordFoodInput.getText().toString().trim();
 
         String date = recordDateInput.getText().toString().trim();
-//        String mealtime = recordMealtimeInput.getText().toString().trim();
         String mealtime = ((Spinner)findViewById(R.id.record_mealtime_spinner)).getSelectedItem().toString();
         String portion = recordPortionSizeInput.getText().toString().trim();
-//        Integer.parseInt("1")
 
         ContentValues contentValues = new ContentValues();
         contentValues.put(FoodTrackerContract.FoodTrackerEntry.KEY_FD_ID, food.getID());

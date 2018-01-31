@@ -26,6 +26,7 @@ public class FoodTrackerContract {
         public static final String KEY_TYPE = "type";
         public static final String KEY_DESCRIPTION = "description";
         public static final String KEY_BRAND = "brand";
+        public static final String KEY_SERVING_SIZE = "serving_size";
         public static final String KEY_CALORIES = "calories";
         public static final String KEY_CARBOHYDRATES = "carbohydrates";
         public static final String KEY_FAT = "fat";

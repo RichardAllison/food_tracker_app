@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.CursorAdapter;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import com.richardallison.foodtracker.data.FoodTrackerContract;
@@ -26,9 +27,11 @@ public class FoodCursorAdapter extends CursorAdapter {
     public void bindView(View view, Context context, Cursor cursor) {
 
         view.setTag(getItem(cursor.getPosition()));
-        Button deleteButton = view.findViewById(R.id.item_food_delete_button);
+        ImageButton deleteButton = view.findViewById(R.id.item_food_delete_button);
+        ImageButton addRecordButton = view.findViewById(R.id.item_food_add_to_record);
         long id = cursor.getLong(cursor.getColumnIndexOrThrow(FoodTrackerContract.FoodTrackerEntry._ID));
         deleteButton.setTag(id);
+        addRecordButton.setTag(id);
 
         TextView name = view.findViewById(R.id.item_food_name);
         name.setText(cursor.getString(cursor.getColumnIndexOrThrow(FoodTrackerContract.FoodTrackerEntry.KEY_NAME)));
