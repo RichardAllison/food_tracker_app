@@ -8,6 +8,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Switch;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.richardallison.foodtracker.data.FoodTrackerContract;
@@ -20,7 +22,10 @@ public class CreateFoodActivity extends AppCompatActivity {
     EditText nameInput;
     EditText typeInput;
     EditText brandInput;
-//    private boolean mFoodHasChanged = false;
+    TextView textView;
+    Button advancedButton;
+//    private boolean foodHasChanged = false;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,6 +42,8 @@ public class CreateFoodActivity extends AppCompatActivity {
         nameInput = findViewById(R.id.food_name_input);
         typeInput = findViewById(R.id.food_type_input);
         brandInput = findViewById(R.id.food_brand_input);
+        textView = findViewById(R.id.textView);
+        advancedButton = findViewById(R.id.button);
     }
 
     public void onSaveButtonClicked(View button) {
@@ -59,6 +66,11 @@ public class CreateFoodActivity extends AppCompatActivity {
         if (intent.resolveActivity(getPackageManager()) != null) {
             startActivity(intent);
         }
+    }
+
+    public void onAdvancedSwitchClick(View switchButton) {
+        textView.setVisibility(View.VISIBLE);
+        advancedButton.setVisibility(View.INVISIBLE);
     }
 
 }

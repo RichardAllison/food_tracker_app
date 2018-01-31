@@ -6,55 +6,32 @@
     android:layout_height="match_parent"
     tools:context="com.richardallison.foodtracker.CreateFoodActivity">
 
+    <TextView
+        android:id="@+id/food_name_label"
+        android:layout_width="67dp"
+        android:layout_height="27dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="32dp"
+        android:text="Food:"
+        android:textAlignment="textEnd"
+        android:textColor="@color/colorAccent"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <EditText
         android:id="@+id/food_name_input"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="28dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="24dp"
         android:ems="10"
         android:inputType="textCapWords"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@+id/food_name_label"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <EditText
-        android:id="@+id/food_type_input"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="72dp"
-        android:ems="10"
-        android:inputType="textCapWords"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/food_type_label"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <EditText
-        android:id="@+id/food_brand_input"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="116dp"
-        android:ems="10"
-        android:inputType="textCapWords"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/food_type_label"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/food_name_label"
-        android:layout_width="63dp"
-        android:layout_height="30dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="40dp"
-        android:text="Food:"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
@@ -62,36 +39,261 @@
         android:layout_width="67dp"
         android:layout_height="27dp"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="18dp"
         android:text="Type:"
+        android:textAlignment="textEnd"
+        android:textColor="@color/colorAccent"
+        android:textSize="16sp"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/food_name_label" />
+
+    <EditText
+        android:id="@+id/food_type_input"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="24dp"
+        android:layout_marginStart="24dp"
+        android:ems="10"
+        android:inputType="textCapWords"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/food_type_label"
+        app:layout_constraintTop_toBottomOf="@+id/food_name_input" />
 
     <TextView
         android:id="@+id/food_brand_label"
         android:layout_width="67dp"
         android:layout_height="27dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="18dp"
         android:text="Brand:"
-        app:layout_constraintEnd_toStartOf="@+id/food_brand_input"
-        app:layout_constraintHorizontal_bias="1.0"
+        android:textAlignment="textEnd"
+        android:textColor="@color/colorAccent"
+        android:textSize="16sp"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/food_type_label" />
+
+    <EditText
+        android:id="@+id/food_brand_input"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="24dp"
+        android:layout_marginStart="24dp"
+        android:ems="10"
+        android:inputType="textCapWords"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/food_brand_label"
+        tools:layout_editor_absoluteY="115dp" />
+
+    <TextView
+        android:id="@+id/food_serving_size_label"
+        android:layout_width="94dp"
+        android:layout_height="29dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="18dp"
+        android:text="Serving size:"
+        android:textAlignment="textEnd"
+        android:textColor="@color/colorAccent"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/food_brand_label" />
+
+    <EditText
+        android:id="@+id/food_serving_size_input"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="24dp"
+        android:layout_marginStart="8dp"
+        android:ems="10"
+        android:inputType="textCapWords"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/food_serving_size_label"
+        app:layout_constraintTop_toBottomOf="@+id/food_brand_input" />
+
+    <TextView
+        android:id="@+id/food_calories_label"
+        android:layout_width="67dp"
+        android:layout_height="27dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:text="Calories:"
+        android:textAlignment="textEnd"
+        android:textColor="@color/colorAccent"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/food_serving_size_label" />
+
+    <EditText
+        android:id="@+id/food_calories_input"
+        android:layout_width="88dp"
+        android:layout_height="21dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:ems="10"
+        android:inputType="textCapWords"
+        app:layout_constraintEnd_toStartOf="@+id/food_carbs_label"
+        app:layout_constraintStart_toEndOf="@+id/food_calories_label"
+        app:layout_constraintTop_toBottomOf="@+id/food_serving_size_input" />
+
+    <TextView
+        android:id="@+id/food_carbs_label"
+        android:layout_width="67dp"
+        android:layout_height="27dp"
+        android:text="Carbs:"
+        android:textAlignment="textEnd"
+        android:textColor="@color/colorAccent"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        tools:layout_editor_absoluteX="188dp"
+        tools:layout_editor_absoluteY="215dp" />
+
+    <EditText
+        android:id="@+id/food_carbs_input"
+        android:layout_width="88dp"
+        android:layout_height="21dp"
+        android:layout_marginEnd="33dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:ems="10"
+        android:inputType="textCapWords"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/food_carbs_label"
+        app:layout_constraintTop_toBottomOf="@+id/food_serving_size_input" />
+
+    <TextView
+        android:id="@+id/food_fat_label"
+        android:layout_width="67dp"
+        android:layout_height="27dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:text="Fat:"
+        android:textAlignment="textEnd"
+        android:textColor="@color/colorAccent"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/food_calories_label" />
+
+    <EditText
+        android:id="@+id/food_fat_input"
+        android:layout_width="88dp"
+        android:layout_height="19dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="9dp"
+        android:ems="10"
+        android:inputType="textCapWords"
+        app:layout_constraintStart_toEndOf="@+id/food_calories_label"
+        app:layout_constraintTop_toBottomOf="@+id/food_calories_input" />
+
+    <TextView
+        android:id="@+id/food_protein_label"
+        android:layout_width="67dp"
+        android:layout_height="27dp"
+        android:layout_marginStart="8dp"
+        android:text="Protein:"
+        android:textAlignment="textEnd"
+        android:textColor="@color/colorAccent"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toEndOf="@+id/food_fat_input"
+        app:layout_constraintTop_toBottomOf="@+id/food_carbs_label" />
+
+    <EditText
+        android:id="@+id/food_protein_input"
+        android:layout_width="88dp"
+        android:layout_height="21dp"
+        android:layout_marginEnd="33dp"
+        android:layout_marginStart="13dp"
+        android:layout_marginTop="7dp"
+        android:ems="10"
+        android:inputType="textCapWords"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/food_protein_label"
+        app:layout_constraintTop_toBottomOf="@+id/food_carbs_input" />
+
+    <TextView
+        android:id="@+id/food_salt_label"
+        android:layout_width="67dp"
+        android:layout_height="27dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="9dp"
+        android:text="Salt:"
+        android:textAlignment="textEnd"
+        android:textColor="@color/colorAccent"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/food_fat_label" />
+
+    <EditText
+        android:id="@+id/food_salt_input"
+        android:layout_width="88dp"
+        android:layout_height="21dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="15dp"
+        android:ems="10"
+        android:inputType="textCapWords"
+        app:layout_constraintStart_toEndOf="@+id/food_calories_label"
+        app:layout_constraintTop_toBottomOf="@+id/food_fat_input" />
+
+    <EditText
+        android:id="@+id/food_sugar_input"
+        android:layout_width="88dp"
+        android:layout_height="21dp"
+        android:layout_marginEnd="33dp"
+        android:layout_marginStart="9dp"
+        android:layout_marginTop="12dp"
+        android:ems="10"
+        android:inputType="textCapWords"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/food_sugar_label"
+        app:layout_constraintTop_toBottomOf="@+id/food_protein_input" />
+
+    <TextView
+        android:id="@+id/food_sugar_label"
+        android:layout_width="67dp"
+        android:layout_height="27dp"
+        android:layout_marginStart="8dp"
+        android:text="Sugar:"
+        android:textAlignment="textEnd"
+        android:textColor="@color/colorAccent"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toEndOf="@+id/food_salt_input"
+        tools:layout_editor_absoluteY="283dp" />
 
     <Button
         android:id="@+id/food_save_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="58dp"
-        android:layout_marginEnd="120dp"
-        android:layout_marginStart="176dp"
-        android:layout_marginTop="243dp"
         android:onClick="onSaveButtonClicked"
         android:text="Save"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/food_brand_input"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <Button
+        android:id="@+id/advanced_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="14dp"
+        android:onClick="onAdvancedSwitchClick"
+        android:text="Advanced"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/food_brand_input" />
 

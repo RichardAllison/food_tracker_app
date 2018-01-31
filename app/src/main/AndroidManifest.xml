@@ -36,7 +36,6 @@
             android:name=".ViewRecordActivity"
             android:label="@string/view_record"
             android:parentActivityName=".ViewAllRecordsActivity" />
-        <activity android:name=".UserInfoActivity" />
         <activity android:name=".ViewAllRecordsByDateActivity" />
     </application>
 
