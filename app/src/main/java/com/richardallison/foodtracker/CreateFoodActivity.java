@@ -22,8 +22,19 @@ public class CreateFoodActivity extends AppCompatActivity {
     EditText nameInput;
     EditText typeInput;
     EditText brandInput;
-    TextView textView;
     Button advancedButton;
+    TextView caloriesLabel;
+    TextView caloriesInput;
+    TextView fatLabel;
+    TextView fatInput;
+    TextView carbsLabel;
+    TextView carbsInput;
+    TextView proteinLabel;
+    TextView proteinInput;
+    TextView saltLabel;
+    TextView saltInput;
+    TextView sugarLabel;
+    TextView sugarInput;
 //    private boolean foodHasChanged = false;
 
 
@@ -42,8 +53,7 @@ public class CreateFoodActivity extends AppCompatActivity {
         nameInput = findViewById(R.id.food_name_input);
         typeInput = findViewById(R.id.food_type_input);
         brandInput = findViewById(R.id.food_brand_input);
-        textView = findViewById(R.id.textView);
-        advancedButton = findViewById(R.id.button);
+        advancedButton = findViewById(R.id.advanced_button);
     }
 
     public void onSaveButtonClicked(View button) {
@@ -69,7 +79,30 @@ public class CreateFoodActivity extends AppCompatActivity {
     }
 
     public void onAdvancedSwitchClick(View switchButton) {
-        textView.setVisibility(View.VISIBLE);
+        caloriesLabel = findViewById(R.id.food_calories_label);
+        caloriesInput = findViewById(R.id.food_calories_input);
+        fatLabel = findViewById(R.id.food_fat_label);
+        fatInput = findViewById(R.id.food_fat_input);
+        carbsLabel = findViewById(R.id.food_carbs_label);
+        carbsInput = findViewById(R.id.food_carbs_input);
+        proteinLabel = findViewById(R.id.food_protein_label);
+        proteinInput = findViewById(R.id.food_protein_input);
+        saltLabel = findViewById(R.id.food_salt_label);
+        saltInput = findViewById(R.id.food_salt_input);
+        sugarLabel = findViewById(R.id.food_sugar_label);
+        sugarInput = findViewById(R.id.food_sugar_input);
+        caloriesLabel.setVisibility(View.VISIBLE);
+        caloriesInput.setVisibility(View.VISIBLE);
+        fatLabel.setVisibility(View.VISIBLE);
+        fatLabel.setVisibility(View.VISIBLE);
+        carbsLabel.setVisibility(View.VISIBLE);
+        carbsInput.setVisibility(View.VISIBLE);
+        proteinLabel.setVisibility(View.VISIBLE);
+        proteinInput.setVisibility(View.VISIBLE);
+        saltLabel.setVisibility(View.VISIBLE);
+        saltInput.setVisibility(View.VISIBLE);
+        sugarLabel.setVisibility(View.VISIBLE);
+        sugarInput.setVisibility(View.VISIBLE);
         advancedButton.setVisibility(View.INVISIBLE);
     }
 
