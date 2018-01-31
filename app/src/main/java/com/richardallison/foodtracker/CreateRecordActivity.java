@@ -27,8 +27,6 @@ import android.widget.AdapterView.OnItemSelectedListener;
 import java.util.ArrayList;
 import java.util.Calendar;
 
-import static java.text.DateFormat.getDateInstance;
-
 public class CreateRecordActivity extends AppCompatActivity {
 
     SQLiteDatabase db;
@@ -53,11 +51,11 @@ public class CreateRecordActivity extends AppCompatActivity {
 
         FoodTrackerDbHelper mDbHelper = new FoodTrackerDbHelper(getApplicationContext());
         db = mDbHelper.getWritableDatabase();
+
         saveRecordButton = findViewById(R.id.record_save_button);
         selectFoodButton = findViewById(R.id.record_select_food_button);
         recordFoodItem = findViewById(R.id.record_food_item);
         recordDateInput = findViewById(R.id.record_date_input);
-//        recordMealtimeInput = findViewById(R.id.record_mealtime_input);
         recordPortionSizeInput = findViewById(R.id.record_portion_size_input);
 
 
@@ -138,7 +136,7 @@ public class CreateRecordActivity extends AppCompatActivity {
         Record newRecord = recordOperations.addRecord(record);
         recordOperations.close();
 
-        Toast.makeText(this, food.getName() + " has been added to records", Toast.LENGTH_LONG).show();
+        Toast.makeText(this, food.getName() + newRecord.id + " has been added to records", Toast.LENGTH_LONG).show();
 
 //        Intent intent = new Intent(this, CreateRecordActivity.class);
 //        if (intent.resolveActivity(getPackageManager()) != null) {

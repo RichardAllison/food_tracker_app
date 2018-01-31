@@ -12,8 +12,8 @@ import com.richardallison.foodtracker.data.FoodTrackerContract.FoodTrackerEntry;
 
 public class FoodOperations {
 
-    private FoodTrackerDbHelper dbHelper;
-    private SQLiteDatabase db;
+    private static FoodTrackerDbHelper dbHelper;
+    private static SQLiteDatabase db;
 
     private static final String[] columns = {
             FoodTrackerEntry._ID,
@@ -126,7 +126,20 @@ public class FoodOperations {
 
     // SELECT - SHOW ALL FOOD ITEMS
 
-    public List<Food> getAllFoods() {
+    public static Cursor getAllFood() {
+
+        Cursor cursor = db.query(FoodTrackerEntry.TABLE_FOOD_AND_DRINKS,
+                columns,
+                null,
+                null,
+                null,
+                null,
+                null
+        );
+        return cursor;
+    }
+
+    public ArrayList<Food> showAllFood() {
 
         Cursor cursor = db.query(FoodTrackerEntry.TABLE_FOOD_AND_DRINKS,
                 columns,
@@ -137,7 +150,7 @@ public class FoodOperations {
                 null
         );
 
-        List<Food> foods = new ArrayList<>();
+        ArrayList<Food> foods = new ArrayList<>();
         if (cursor.getCount() > 0) {
             while (cursor.moveToNext()) {
                 Food food = new Food();

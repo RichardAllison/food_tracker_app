@@ -23,18 +23,6 @@ public class CreateFoodActivity extends AppCompatActivity {
     EditText typeInput;
     EditText brandInput;
     Button advancedButton;
-    TextView caloriesLabel;
-    TextView caloriesInput;
-    TextView fatLabel;
-    TextView fatInput;
-    TextView carbsLabel;
-    TextView carbsInput;
-    TextView proteinLabel;
-    TextView proteinInput;
-    TextView saltLabel;
-    TextView saltInput;
-    TextView sugarLabel;
-    TextView sugarInput;
 //    private boolean foodHasChanged = false;
 
 
@@ -79,18 +67,18 @@ public class CreateFoodActivity extends AppCompatActivity {
     }
 
     public void onAdvancedSwitchClick(View switchButton) {
-        caloriesLabel = findViewById(R.id.food_calories_label);
-        caloriesInput = findViewById(R.id.food_calories_input);
-        fatLabel = findViewById(R.id.food_fat_label);
-        fatInput = findViewById(R.id.food_fat_input);
-        carbsLabel = findViewById(R.id.food_carbs_label);
-        carbsInput = findViewById(R.id.food_carbs_input);
-        proteinLabel = findViewById(R.id.food_protein_label);
-        proteinInput = findViewById(R.id.food_protein_input);
-        saltLabel = findViewById(R.id.food_salt_label);
-        saltInput = findViewById(R.id.food_salt_input);
-        sugarLabel = findViewById(R.id.food_sugar_label);
-        sugarInput = findViewById(R.id.food_sugar_input);
+        TextView caloriesLabel = findViewById(R.id.food_calories_label);
+        TextView caloriesInput = findViewById(R.id.food_calories_input);
+        TextView fatLabel = findViewById(R.id.food_fat_label);
+        TextView fatInput = findViewById(R.id.food_fat_input);
+        TextView carbsLabel = findViewById(R.id.food_carbs_label);
+        TextView carbsInput = findViewById(R.id.food_carbs_input);
+        TextView proteinLabel = findViewById(R.id.food_protein_label);
+        TextView proteinInput = findViewById(R.id.food_protein_input);
+        TextView saltLabel = findViewById(R.id.food_salt_label);
+        TextView saltInput = findViewById(R.id.food_salt_input);
+        TextView sugarLabel = findViewById(R.id.food_sugar_label);
+        TextView sugarInput = findViewById(R.id.food_sugar_input);
         caloriesLabel.setVisibility(View.VISIBLE);
         caloriesInput.setVisibility(View.VISIBLE);
         fatLabel.setVisibility(View.VISIBLE);

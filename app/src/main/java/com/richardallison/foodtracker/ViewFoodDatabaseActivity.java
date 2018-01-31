@@ -5,6 +5,8 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
@@ -17,26 +19,43 @@ import com.richardallison.foodtracker.data.FoodTrackerDbHelper;
 
 public class ViewFoodDatabaseActivity extends AppCompatActivity {
 
-    SQLiteDatabase db;
-    FoodTrackerDbHelper dbHelper;
-    FoodOperations foodOperations;
+    private SQLiteDatabase db;
+    private FoodTrackerDbHelper dbHelper;
+    private FoodOperations foodOperations;
 
-    Cursor cursor;
+    private Cursor cursor;
 
-    FoodCursorAdapter foodCursorAdapter;
+//    FoodCursorAdapter foodCursorAdapter;
+
+    private FoodRecyclerAdapter foodRecyclerAdapter;
 
     Button createFoodButton;
-    ListView foodDatabaseListView;
+//    ListView foodDatabaseListView;
+    RecyclerView foodDatabaseRecyclerView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_view_food_database);
+//        setContentView(R.layout.activity_view_food_database);
+        setContentView(R.layout.activity_view_food_database_recycler);
 
         createFoodButton = findViewById(R.id.create_food_button);
-        foodDatabaseListView = findViewById(R.id.food_database_list);
+//        foodDatabaseListView = findViewById(R.id.food_database_list);
+        foodDatabaseRecyclerView = findViewById(R.id.food_database_recycler);
 
-        displayFoodDatabase();
+        LinearLayoutManager layoutManager = new LinearLayoutManager(this);
+        foodDatabaseRecyclerView.setLayoutManager(layoutManager);
+
+        foodDatabaseRecyclerView.setHasFixedSize(true);
+
+        FoodOperations foodOperations = new FoodOperations(this);
+        foodOperations.open();
+
+        foodRecyclerAdapter = new FoodRecyclerAdapter(foodOperations.showAllFood());
+        foodDatabaseRecyclerView.setAdapter(foodRecyclerAdapter);
+        foodOperations.close();
+
+//        displayFoodDatabase();
 
     }
 
@@ -95,8 +114,10 @@ public class ViewFoodDatabaseActivity extends AppCompatActivity {
                 null
         );
 
-        foodCursorAdapter = new FoodCursorAdapter(this, cursor);
-        foodDatabaseListView.setAdapter(foodCursorAdapter);
+//        foodCursorAdapter = new FoodCursorAdapter(this, cursor);
+//        foodDatabaseListView.setAdapter(foodCursorAdapter);
+//        foodRecyclerAdapter = new FoodRecyclerAdapter(this, cursor);
+//        foodDatabaseRecyclerView.setAdapter(foodRecyclerAdapter);
 
     }
 

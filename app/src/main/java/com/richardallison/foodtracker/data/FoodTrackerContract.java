@@ -2,21 +2,27 @@ package com.richardallison.foodtracker.data;
 
 import android.net.Uri;
 import android.provider.BaseColumns;
-import android.text.format.Time;
 
 public class FoodTrackerContract {
 
     public FoodTrackerContract() {}
 
-//    private static final String CONTENT_AUTHORITY = "com.codeclan.example.foodtracker.app";
-//    private static final Uri BASE_CONTENT_URI = Uri.parse("content://" + CONTENT_AUTHORITY);
+        public static final String CONTENT_AUTHORITY = "com.richardallison.foodtracker";
+        public static final Uri BASE_CONTENT_URI = Uri.parse("content://" + CONTENT_AUTHORITY);
+
+        public static final String PATH_FOOD = "food";
+        public static final String PATH_RECORDS = "records";
 
     public static abstract class FoodTrackerEntry implements BaseColumns {
+
+        public static final Uri FOOD_URI = Uri.withAppendedPath(BASE_CONTENT_URI, PATH_FOOD);
+        public static final Uri RECORDS_URI = Uri.withAppendedPath(BASE_CONTENT_URI, PATH_RECORDS);
 
         // Table names
 
         public static final String TABLE_FOOD_AND_DRINKS = "food_and_drinks";
         public static final String TABLE_RECORDS = "user_records";
+        public static final String TABLE_RECORD_DATES = "record_dates";
 //        static final String TABLE_TARGET = "user_targets";
 //        static final String TABLE_SHOPPING_LIST = "user_shopping_lists";
 

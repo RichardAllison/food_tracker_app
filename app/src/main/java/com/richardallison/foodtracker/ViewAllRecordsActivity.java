@@ -36,6 +36,8 @@ public class ViewAllRecordsActivity extends AppCompatActivity {
         displayRecords();
     }
 
+
+
     public void onCreateRecordButtonClicked(View button) {
         Intent intent = new Intent(this, CreateRecordActivity.class);
         startActivity(intent);
@@ -96,6 +98,7 @@ public class ViewAllRecordsActivity extends AppCompatActivity {
 //        intent.putExtra("record", record);
         startActivity(intent);
     }
+
 
 
 

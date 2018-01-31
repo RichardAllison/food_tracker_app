@@ -44,7 +44,9 @@ public class RecordOperations {
         values.put(FoodTrackerEntry.KEY_MEAL_TIME, record.getMealtime());
         values.put(FoodTrackerEntry.KEY_PORTION_SIZE, record.getPortionSize());
 
-        long newRowId = db.insert(FoodTrackerEntry.TABLE_RECORDS, null, values);
+        long newRowId = db.insert(FoodTrackerEntry.TABLE_RECORDS,
+                null,
+                values);
         record.setID(newRowId);
         return record;
     }

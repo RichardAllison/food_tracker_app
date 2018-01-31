@@ -37,6 +37,10 @@
             android:label="@string/view_record"
             android:parentActivityName=".ViewAllRecordsActivity" />
         <activity android:name=".ViewAllRecordsByDateActivity" />
+        <provider
+            android:name=".data.FoodTrackerProvider"
+            android:authorities="com.richardallison.foodtracker"
+            android:exported="false" />
     </application>
 
 </manifest>
