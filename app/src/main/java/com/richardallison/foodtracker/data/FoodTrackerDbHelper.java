@@ -8,7 +8,7 @@ import static com.richardallison.foodtracker.data.FoodTrackerContract.FoodTracke
 
 public class FoodTrackerDbHelper extends SQLiteOpenHelper {
 
-    public static final int DATABASE_VERSION = 1;
+    public static final int DATABASE_VERSION = 2;
     public static final String DATABASE_NAME = "FoodTracker.db";
 
     public FoodTrackerDbHelper(Context context) {
@@ -66,6 +66,7 @@ public class FoodTrackerDbHelper extends SQLiteOpenHelper {
     private static final String SQL_CREATE_TABLE_RECORD =
             "CREATE TABLE IF NOT EXISTS " + TABLE_RECORDS + "("
                     + _ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"
+                    + KEY_NAME + " TEXT,"
                     + KEY_DATE + " TEXT,"
                     + KEY_MEAL_TIME + " TEXT,"
                     + KEY_PORTION_SIZE + " TEXT,"

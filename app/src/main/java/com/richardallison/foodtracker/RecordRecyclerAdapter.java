@@ -8,6 +8,8 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.richardallison.foodtracker.data.FoodOperations;
+
 import java.util.ArrayList;
 
 

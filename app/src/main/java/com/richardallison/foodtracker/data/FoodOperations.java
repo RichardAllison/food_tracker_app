@@ -123,6 +123,32 @@ public class FoodOperations {
         return food;
     }
 
+    public String getFoodName(long id) {
+        String[] foodID = new String[] {
+                String.valueOf(id)
+        };
+
+        String[] columns = new String[] {FoodTrackerEntry.KEY_NAME};
+
+        Cursor cursor = db.query(FoodTrackerEntry.TABLE_FOOD_AND_DRINKS,
+                columns,
+                FoodTrackerEntry._ID + "=?",
+                foodID,
+                null,
+                null,
+                null,
+                null
+        );
+
+        if (cursor != null)
+            cursor.moveToFirst();
+
+        String foodName = cursor.getString(1);
+
+        cursor.close();
+
+        return foodName;
+    }
 
     // SELECT - SHOW ALL FOOD ITEMS
 

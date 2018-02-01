@@ -124,18 +124,19 @@ public class CreateRecordActivity extends AppCompatActivity {
         if (food == null) return;
         if (recordDateInput.getText().toString().length() == 0) return;
 
+        String name = food.getName();
         String date = recordDateInput.getText().toString().trim();
         String mealtime = ((Spinner)findViewById(R.id.record_mealtime_spinner)).getSelectedItem().toString();
         String portion = recordPortionSizeInput.getText().toString().trim();
 
-        Record record = new Record(date, food.getID(), mealtime, portion);
+        Record record = new Record(name, date, food.getID(), mealtime, portion);
 
         RecordOperations recordOperations = new RecordOperations(this);
         recordOperations.open();
         Record newRecord = recordOperations.addRecord(record);
         recordOperations.close();
 
-        Toast.makeText(this, food.getName() + newRecord.id + " has been added to records", Toast.LENGTH_LONG).show();
+        Toast.makeText(this, food.getName() + newRecord.getID() + " has been added to records", Toast.LENGTH_LONG).show();
 
         Intent intent = new Intent(this, ViewAllRecordsActivity.class);
         if (intent.resolveActivity(getPackageManager()) != null) {

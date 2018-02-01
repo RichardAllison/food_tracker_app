@@ -5,19 +5,27 @@ import java.io.Serializable;
 
 public class Record implements Serializable {
 
-    long id;
+    private long id;
+    private String foodName;
     private String date;
     private long itemID;
 //    private int mealtime;
     private String mealtime;
     private String portionSize;
-    private String foodName;
 
     public Record() {
 
     }
 
     public Record(String date, long itemID, String meal, String portionSize) {
+        this.date = date;
+        this.itemID = itemID;
+        this.mealtime = meal;
+        this.portionSize = portionSize;
+    }
+
+    public Record(String name, String date, long itemID, String meal, String portionSize) {
+        this.foodName = name;
         this.date = date;
         this.itemID = itemID;
         this.mealtime = meal;

@@ -7,6 +7,7 @@ import android.database.Cursor;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.richardallison.foodtracker.Food;
 import com.richardallison.foodtracker.Record;
 import com.richardallison.foodtracker.data.FoodTrackerContract.FoodTrackerEntry;
 
@@ -41,6 +42,7 @@ public class RecordOperations {
         ContentValues values = new ContentValues();
         values.put(FoodTrackerEntry.KEY_DATE, record.getDate());
         values.put(FoodTrackerEntry.KEY_FD_ID, record.getItemID());
+        values.put(FoodTrackerEntry.KEY_NAME, record.getFoodName());
         values.put(FoodTrackerEntry.KEY_MEAL_TIME, record.getMealtime());
         values.put(FoodTrackerEntry.KEY_PORTION_SIZE, record.getPortionSize());
 
@@ -101,10 +103,12 @@ public class RecordOperations {
         String recordsTable = FoodTrackerEntry.TABLE_RECORDS;
 
         String[] columns = {
-                FoodTrackerEntry.TABLE_RECORDS + "." + FoodTrackerEntry._ID,
-                FoodTrackerEntry.KEY_DATE,
+                FoodTrackerEntry._ID,
                 FoodTrackerEntry.KEY_FD_ID,
+                FoodTrackerEntry.KEY_NAME,
+                FoodTrackerEntry.KEY_DATE,
                 FoodTrackerEntry.KEY_MEAL_TIME,
+                FoodTrackerEntry.KEY_PORTION_SIZE
         };
 
         Cursor cursor = db.query(
@@ -125,8 +129,8 @@ public class RecordOperations {
                 record.setDateID(cursor.getString(cursor.getColumnIndexOrThrow(FoodTrackerEntry.KEY_DATE)));
                 record.setItemID(cursor.getInt(cursor.getColumnIndexOrThrow(FoodTrackerEntry.KEY_FD_ID)));
                 record.setMealtime(cursor.getString(cursor.getColumnIndexOrThrow(FoodTrackerEntry.KEY_MEAL_TIME)));
-//                record.setPortionSize(cursor.getString(cursor.getColumnIndexOrThrow(FoodTrackerEntry.KEY_PORTION_SIZE)));
-//                record.setFoodName(cursor.getString(cursor.getColumnIndexOrThrow(FoodTrackerEntry.KEY_NAME)));
+                record.setPortionSize(cursor.getString(cursor.getColumnIndexOrThrow(FoodTrackerEntry.KEY_PORTION_SIZE)));
+                record.setFoodName(cursor.getString(cursor.getColumnIndexOrThrow(FoodTrackerEntry.KEY_NAME)));
                 records.add(record);
             }
         }
