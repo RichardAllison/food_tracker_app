@@ -1,6 +1,7 @@
 package com.richardallison.foodtracker;
 
 
+import android.app.FragmentManager;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -13,10 +14,11 @@ import android.widget.Toast;
 
 import com.richardallison.foodtracker.data.DateOperations;
 import com.richardallison.foodtracker.data.RecordOperations;
+import com.richardallison.foodtracker.dummy.DummyContent;
 
 import java.util.ArrayList;
 
-public class ViewAllRecordsByDateActivity extends AppCompatActivity {
+public class ViewAllRecordsByDateActivity extends AppCompatActivity implements RecordFragment.OnListFragmentInteractionListener {
 
 
     private DateAdapter dateAdapter;
@@ -39,15 +41,15 @@ public class ViewAllRecordsByDateActivity extends AppCompatActivity {
 
         dateRecyclerView.setHasFixedSize(true);
 
-        recordOperations = new RecordOperations(this);
-        recordOperations.open();
-        ArrayList<Record> recordArrayList = recordOperations.getAllRecords();
-        recordOperations.close();
+//        recordOperations = new RecordOperations(this);
+//        recordOperations.open();
+//        ArrayList<Record> recordArrayList = recordOperations.getAllRecords();
+//        recordOperations.close();
 
         dateOperations = new DateOperations(this);
         dateOperations.open();
 
-        dateAdapter = new DateAdapter(dateOperations.getAllRecordDates(), recordArrayList);
+        dateAdapter = new DateAdapter(dateOperations.getAllRecordDates());
         dateRecyclerView.setAdapter(dateAdapter);
         dateOperations.close();
     }
@@ -63,6 +65,11 @@ public class ViewAllRecordsByDateActivity extends AppCompatActivity {
         Intent intent = new Intent(this, ViewRecordActivity.class);
 //        intent.putExtra("record", record);
         startActivity(intent);
+    }
+
+    @Override
+    public void onListFragmentInteraction(DummyContent.DummyItem item) {
+
     }
 }
 

@@ -37,6 +37,7 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <ListView
+                android:id="@+id/listView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -50,6 +51,15 @@
                 android:layout_height="wrap_content"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <fragment
+                android:id="@+id/record_fragment"
+                android:name="android.support.v4.app.ListFragment"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintBottom_toTopOf="@+id/listView"
+                app:layout_constraintEnd_toStartOf="@+id/food_items_text_view"
                 app:layout_constraintStart_toStartOf="parent" />
 
         </android.support.constraint.ConstraintLayout>

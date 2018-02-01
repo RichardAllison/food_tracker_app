@@ -13,11 +13,9 @@ import java.util.ArrayList;
 public class DateAdapter extends RecyclerView.Adapter<DateAdapter.DateViewHolder> {
 
     private ArrayList<RecordDate> dateArrayList;
-    private ArrayList<Record> recordArrayList;
 
-    public DateAdapter(ArrayList<RecordDate> dateArrayList, ArrayList<Record> recordArrayList) {
+    public DateAdapter(ArrayList<RecordDate> dateArrayList) {
         this.dateArrayList = dateArrayList;
-        this.recordArrayList = recordArrayList;
     }
 
 
@@ -36,16 +34,15 @@ public class DateAdapter extends RecyclerView.Adapter<DateAdapter.DateViewHolder
     public void onBindViewHolder(DateViewHolder holder, int position) {
         RecordDate recordDate = dateArrayList.get(position);
 
-        ArrayList<Record> recordsByDate = new ArrayList<>();
-        for(Record record : recordsByDate){
-            if (record.getDate() == recordDate.getDate()) {
-                recordArrayList.add(record);
-            }
-        }
+//        ArrayList<Record> recordsByDate = new ArrayList<>();
+//        for(Record record : recordsByDate){
+//            if (record.getDate() == recordDate.getDate()) {
+//                recordArrayList.add(record);
+//            }
+//        }
 
 
         holder.date.setText(recordDate.getDate());
-        holder.foodItems.setText(recordDate.toString());
 //        holder.addRecordButton.setTag(food.getID());
 //        holder.deleteButton.setTag(food.getID());
     }
