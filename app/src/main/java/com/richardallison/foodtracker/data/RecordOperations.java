@@ -56,22 +56,42 @@ public class RecordOperations {
 
     public ArrayList<Record> displayRecords() {
 
-        String recordsTable = FoodTrackerContract.FoodTrackerEntry.TABLE_RECORDS;
-
-        String[] columns = {
-                FoodTrackerContract.FoodTrackerEntry._ID,
-                FoodTrackerContract.FoodTrackerEntry.KEY_FD_ID,
-                FoodTrackerContract.FoodTrackerEntry.KEY_NAME,
-                FoodTrackerContract.FoodTrackerEntry.KEY_DATE,
-                FoodTrackerContract.FoodTrackerEntry.KEY_MEAL_TIME,
-                FoodTrackerContract.FoodTrackerEntry.KEY_PORTION_SIZE
-        };
-
         Cursor cursor = db.query(
-                recordsTable,
+                FoodTrackerEntry.TABLE_RECORDS,
                 columns,
                 null,
                 null,
+                null,
+                null,
+                null
+        );
+
+        ArrayList<Record> records = new ArrayList<>();
+        if (cursor.getCount() > 0) {
+            while (cursor.moveToNext()) {
+                Record record = new Record();
+                record.setID(cursor.getLong(cursor.getColumnIndexOrThrow(FoodTrackerContract.FoodTrackerEntry._ID)));
+                record.setDate(cursor.getString(cursor.getColumnIndexOrThrow(FoodTrackerContract.FoodTrackerEntry.KEY_DATE)));
+                record.setItemID(cursor.getInt(cursor.getColumnIndexOrThrow(FoodTrackerContract.FoodTrackerEntry.KEY_FD_ID)));
+                record.setMealtime(cursor.getString(cursor.getColumnIndexOrThrow(FoodTrackerContract.FoodTrackerEntry.KEY_MEAL_TIME)));
+                record.setPortionSize(cursor.getString(cursor.getColumnIndexOrThrow(FoodTrackerContract.FoodTrackerEntry.KEY_PORTION_SIZE)));
+                record.setFoodName(cursor.getString(cursor.getColumnIndexOrThrow(FoodTrackerContract.FoodTrackerEntry.KEY_NAME)));
+                records.add(record);
+            }
+        }
+        cursor.close();
+        return records;
+    }
+
+    public ArrayList<Record> findRecordsByDate(String date) {
+
+        String selection = "date";
+        String[] selectionArgs = new String[] {date};
+
+        Cursor cursor = db.query(FoodTrackerContract.FoodTrackerEntry.TABLE_RECORDS,
+                columns,
+                selection + "=?",
+                selectionArgs,
                 null,
                 null,
                 null
@@ -115,7 +135,6 @@ public class RecordOperations {
             cursor.moveToFirst();
 
         Record record = new Record(Long.parseLong(cursor.getString(0)),
-//                cursor.getInt(1),
                 cursor.getString(1),
                 cursor.getInt(2),
                 cursor.getString(3),
@@ -130,7 +149,7 @@ public class RecordOperations {
 
 // SELECT - SHOW ALL RECORD ITEMS
 
-    public List<Record> getAllRecords() {
+    public ArrayList<Record> getAllRecords() {
 
         Cursor cursor = db.query(FoodTrackerContract.FoodTrackerEntry.TABLE_RECORDS,
                 columns,
@@ -141,7 +160,7 @@ public class RecordOperations {
                 null
         );
 
-        List<Record> records = new ArrayList<>();
+        ArrayList<Record> records = new ArrayList<>();
         if (cursor.getCount() > 0) {
             while (cursor.moveToNext()) {
                 Record record = new Record();
@@ -156,54 +175,6 @@ public class RecordOperations {
         cursor.close();
         return records;
     }
-
-
-//    private List<Record> displayRecords() {
-//
-//        String records = FoodTrackerEntry.TABLE_RECORDS;
-//        String foodAndDrinks = FoodTrackerEntry.TABLE_FOOD_AND_DRINKS;
-//
-//        String[] columns = {
-//                FoodTrackerEntry.TABLE_RECORDS + "." + FoodTrackerEntry._ID,
-//                FoodTrackerEntry.KEY_DATE_ID,
-//                FoodTrackerEntry.KEY_FD_ID,
-//                FoodTrackerEntry.KEY_MEAL_TIME,
-//                FoodTrackerEntry.KEY_NAME
-//        };
-//
-////        String sortOrder =
-////                FoodTrackerEntry.KEY_NAME + " ASC";
-//
-//        String table = records + " inner join " + foodAndDrinks
-//                + " on " + records + "." + FoodTrackerEntry.KEY_FD_ID
-//                + " = " + foodAndDrinks + "." + FoodTrackerEntry._ID;
-//
-//        Cursor cursor = db.query(
-//                table,
-//                columns,
-//                null,
-//                null,
-//                null,
-//                null,
-//                null
-//        );
-//
-//        List<Record> recordsArray = new ArrayList<>();
-//        if (cursor.getCount() > 0) {
-//            while (cursor.moveToNext()) {
-//                Record record = new Record();
-//                record.setID(cursor.getLong(cursor.getColumnIndex(FoodTrackerEntry._ID)));
-//                record.setDateID(cursor.getInt(cursor.getColumnIndex(FoodTrackerEntry.KEY_DATE_ID)));
-//                record.setItemID(cursor.getInt(cursor.getColumnIndex(FoodTrackerEntry.KEY_FD_ID)));
-//                record.setMealtime(cursor.getInt(cursor.getColumnIndex(FoodTrackerEntry.KEY_MEAL_TIME)));
-//                record.setPortionSize(cursor.getString(cursor.getColumnIndex(FoodTrackerEntry.KEY_PORTION_SIZE)));
-//                record.setFoodName(cursor.getString(cursor.getColumnIndex(FoodTrackerEntry.KEY_NAME)));
-//                recordsArray.add(record);
-//            }
-//        }
-//        cursor.close();
-//        return recordsArray;
-//    }
 
 
 // UPDATE - UPDATE RECORD ITEM BY ID

@@ -8,26 +8,24 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
-import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.view.View;
-import android.widget.Button;
-
 import com.richardallison.foodtracker.data.DateOperations;
+import com.richardallison.foodtracker.data.RecordOperations;
+
+import java.util.ArrayList;
 
 public class ViewAllRecordsByDateActivity extends AppCompatActivity {
 
 
-    DateAdapter dateAdapter;
+    private DateAdapter dateAdapter;
     private DateOperations dateOperations;
+    private RecordOperations recordOperations;
 
-    Button createRecordButton;
-    RecyclerView dateRecyclerView;
+    private Button createRecordButton;
+    private RecyclerView dateRecyclerView;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,10 +39,15 @@ public class ViewAllRecordsByDateActivity extends AppCompatActivity {
 
         dateRecyclerView.setHasFixedSize(true);
 
+        recordOperations = new RecordOperations(this);
+        recordOperations.open();
+        ArrayList<Record> recordArrayList = recordOperations.getAllRecords();
+        recordOperations.close();
+
         dateOperations = new DateOperations(this);
         dateOperations.open();
 
-        dateAdapter = new DateAdapter(dateOperations.getAllRecordDates());
+        dateAdapter = new DateAdapter(dateOperations.getAllRecordDates(), recordArrayList);
         dateRecyclerView.setAdapter(dateAdapter);
         dateOperations.close();
     }

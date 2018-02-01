@@ -13,10 +13,13 @@ import java.util.ArrayList;
 public class DateAdapter extends RecyclerView.Adapter<DateAdapter.DateViewHolder> {
 
     private ArrayList<RecordDate> dateArrayList;
+    private ArrayList<Record> recordArrayList;
 
-    public DateAdapter(ArrayList<RecordDate> dateArrayList) {
+    public DateAdapter(ArrayList<RecordDate> dateArrayList, ArrayList<Record> recordArrayList) {
         this.dateArrayList = dateArrayList;
+        this.recordArrayList = recordArrayList;
     }
+
 
     @Override
     public DateViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
@@ -33,8 +36,16 @@ public class DateAdapter extends RecyclerView.Adapter<DateAdapter.DateViewHolder
     public void onBindViewHolder(DateViewHolder holder, int position) {
         RecordDate recordDate = dateArrayList.get(position);
 
-        holder.date.setText(recordDate.getDate());
+        ArrayList<Record> recordsByDate = new ArrayList<>();
+        for(Record record : recordsByDate){
+            if (record.getDate() == recordDate.getDate()) {
+                recordArrayList.add(record);
+            }
+        }
 
+
+        holder.date.setText(recordDate.getDate());
+        holder.foodItems.setText(recordDate.toString());
 //        holder.addRecordButton.setTag(food.getID());
 //        holder.deleteButton.setTag(food.getID());
     }
@@ -46,6 +57,7 @@ public class DateAdapter extends RecyclerView.Adapter<DateAdapter.DateViewHolder
 
     public class DateViewHolder extends RecyclerView.ViewHolder {
         public TextView date;
+        public TextView foodItems;
 //        ImageButton addRecordButton;
 //        ImageButton deleteButton;
 
@@ -54,6 +66,7 @@ public class DateAdapter extends RecyclerView.Adapter<DateAdapter.DateViewHolder
 //            addRecordButton = itemView.findViewById(R.id.item_food_add_to_record);
 //            deleteButton = itemView.findViewById(R.id.item_food_delete_button);
             date = itemView.findViewById(R.id.item_date_date);
+            foodItems = itemView.findViewById(R.id.food_items_text_view);
         }
     }
 }
