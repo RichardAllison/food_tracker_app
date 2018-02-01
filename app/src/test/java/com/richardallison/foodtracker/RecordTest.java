@@ -1,11 +1,13 @@
 package com.richardallison.foodtracker;
 
+import com.richardallison.foodtracker.models.Drink;
+import com.richardallison.foodtracker.models.Food;
+import com.richardallison.foodtracker.models.Record;
+
 import org.junit.Before;
-import org.junit.Test;
 
 //import java.util.Date;
 //import java.sql.Time;
-import java.time.LocalDate;
 
 import static org.junit.Assert.assertEquals;
 

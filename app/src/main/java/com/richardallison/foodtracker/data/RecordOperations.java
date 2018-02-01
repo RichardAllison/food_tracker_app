@@ -5,10 +5,8 @@ import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.Cursor;
 import java.util.ArrayList;
-import java.util.List;
 
-import com.richardallison.foodtracker.Food;
-import com.richardallison.foodtracker.Record;
+import com.richardallison.foodtracker.models.Record;
 import com.richardallison.foodtracker.data.FoodTrackerContract.FoodTrackerEntry;
 
 public class RecordOperations {

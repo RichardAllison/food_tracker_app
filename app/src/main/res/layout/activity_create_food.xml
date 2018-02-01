@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.richardallison.foodtracker.CreateFoodActivity">
+    tools:context="com.richardallison.foodtracker.activities.CreateFoodActivity">
 
     <TextView
         android:id="@+id/food_name_label"

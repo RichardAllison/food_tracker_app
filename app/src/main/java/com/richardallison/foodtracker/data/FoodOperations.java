@@ -6,7 +6,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.Cursor;
 import java.util.ArrayList;
 
-import com.richardallison.foodtracker.Food;
+import com.richardallison.foodtracker.models.Food;
 import com.richardallison.foodtracker.data.FoodTrackerContract.FoodTrackerEntry;
 
 public class FoodOperations {

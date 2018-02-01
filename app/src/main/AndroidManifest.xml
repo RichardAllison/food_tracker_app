@@ -9,7 +9,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity">
+        <activity android:name=".activities.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -17,26 +17,26 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".ViewFoodDatabaseActivity"
+            android:name=".activities.ViewFoodDatabaseActivity"
             android:label="@string/food_database"
-            android:parentActivityName=".MainActivity" />
+            android:parentActivityName=".activities.MainActivity" />
         <activity
-            android:name=".CreateFoodActivity"
+            android:name=".activities.CreateFoodActivity"
             android:label="@string/create_food"
-            android:parentActivityName=".ViewFoodDatabaseActivity" />
+            android:parentActivityName=".activities.ViewFoodDatabaseActivity" />
         <activity
-            android:name=".ViewAllRecordsActivity"
+            android:name=".activities.ViewAllRecordsActivity"
             android:label="@string/user_records"
-            android:parentActivityName=".MainActivity" />
+            android:parentActivityName=".activities.MainActivity" />
         <activity
-            android:name=".CreateRecordActivity"
+            android:name=".activities.CreateRecordActivity"
             android:label="@string/new_record"
-            android:parentActivityName=".ViewAllRecordsActivity" />
+            android:parentActivityName=".activities.ViewAllRecordsActivity" />
         <activity
-            android:name=".ViewRecordActivity"
+            android:name=".activities.ViewRecordActivity"
             android:label="@string/view_record"
-            android:parentActivityName=".ViewAllRecordsActivity" />
-        <activity android:name=".ViewAllRecordsByDateActivity" />
+            android:parentActivityName=".activities.ViewAllRecordsActivity" />
+        <activity android:name=".activities.ViewAllRecordsByDateActivity" />
         <!--<provider-->
             <!--android:name=".data.FoodTrackerProvider"-->
             <!--android:authorities="com.richardallison.foodtracker"-->

@@ -1,5 +1,7 @@
 package com.richardallison.foodtracker;
 
+import com.richardallison.foodtracker.models.Food;
+
 import org.junit.Before;
 import org.junit.Test;
 
