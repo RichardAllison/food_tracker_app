@@ -88,4 +88,7 @@ public class Record implements Serializable {
         this.foodName = foodName;
     }
 
+    public void setDate(String date) {
+        this.date = date;
+    }
 }

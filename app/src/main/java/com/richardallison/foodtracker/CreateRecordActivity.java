@@ -18,6 +18,7 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.richardallison.foodtracker.data.DateOperations;
 import com.richardallison.foodtracker.data.FoodTrackerContract;
 import com.richardallison.foodtracker.data.FoodTrackerDbHelper;
 import com.richardallison.foodtracker.data.RecordOperations;
@@ -37,6 +38,9 @@ public class CreateRecordActivity extends AppCompatActivity {
     EditText recordPortionSizeInput;
     Food food;
     Spinner mealSpinner;
+
+    RecordOperations recordOperations;
+    DateOperations dateOperations;
 
     private DatePickerDialog.OnDateSetListener dateSetListener;
 
@@ -131,12 +135,17 @@ public class CreateRecordActivity extends AppCompatActivity {
 
         Record record = new Record(name, date, food.getID(), mealtime, portion);
 
-        RecordOperations recordOperations = new RecordOperations(this);
+        dateOperations = new DateOperations(this);
+        dateOperations.open();
+        RecordDate recordDate = dateOperations.addRecordDate(new RecordDate(date));
+        dateOperations.close();
+
+        recordOperations = new RecordOperations(this);
         recordOperations.open();
         Record newRecord = recordOperations.addRecord(record);
         recordOperations.close();
 
-        Toast.makeText(this, food.getName() + newRecord.getID() + " has been added to records", Toast.LENGTH_LONG).show();
+        Toast.makeText(this, food.getName() + recordDate.getID() + " has been added to records", Toast.LENGTH_LONG).show();
 
         Intent intent = new Intent(this, ViewAllRecordsActivity.class);
         if (intent.resolveActivity(getPackageManager()) != null) {

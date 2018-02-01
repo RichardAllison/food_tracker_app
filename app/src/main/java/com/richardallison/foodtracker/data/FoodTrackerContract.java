@@ -1,6 +1,6 @@
 package com.richardallison.foodtracker.data;
 
-import android.net.Uri;
+//import android.net.Uri;
 import android.provider.BaseColumns;
 
 public class FoodTrackerContract {

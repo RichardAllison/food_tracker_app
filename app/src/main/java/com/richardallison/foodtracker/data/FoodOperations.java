@@ -5,7 +5,6 @@ import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.Cursor;
 import java.util.ArrayList;
-import java.util.List;
 
 import com.richardallison.foodtracker.Food;
 import com.richardallison.foodtracker.data.FoodTrackerContract.FoodTrackerEntry;
@@ -123,33 +122,6 @@ public class FoodOperations {
         return food;
     }
 
-    public String getFoodName(long id) {
-        String[] foodID = new String[] {
-                String.valueOf(id)
-        };
-
-        String[] columns = new String[] {FoodTrackerEntry.KEY_NAME};
-
-        Cursor cursor = db.query(FoodTrackerEntry.TABLE_FOOD_AND_DRINKS,
-                columns,
-                FoodTrackerEntry._ID + "=?",
-                foodID,
-                null,
-                null,
-                null,
-                null
-        );
-
-        if (cursor != null)
-            cursor.moveToFirst();
-
-        String foodName = cursor.getString(1);
-
-        cursor.close();
-
-        return foodName;
-    }
-
     // SELECT - SHOW ALL FOOD ITEMS
 
     public static Cursor getAllFood() {
@@ -204,42 +176,6 @@ public class FoodOperations {
         cursor.close();
         return foods;
     }
-
-//    public void displayFoodDatabase() {
-//        String[] columns = {
-//                FoodTrackerContract.FoodTrackerEntry._ID,
-//                FoodTrackerContract.FoodTrackerEntry.KEY_NAME,
-//                FoodTrackerContract.FoodTrackerEntry.KEY_TYPE,
-//                FoodTrackerContract.FoodTrackerEntry.KEY_BRAND
-//        };
-//
-//        String sortOrder =
-//                FoodTrackerContract.FoodTrackerEntry._ID + " ASC";
-//
-//        Cursor cursor = db.query(
-//                FoodTrackerContract.FoodTrackerEntry.TABLE_FOOD_AND_DRINKS,
-//                columns,
-//                null,
-//                null,
-//                null,
-//                null,
-//                sortOrder
-//        );
-//
-//        List<Food> foods = new ArrayList<>();
-//        if (cursor.getCount() > 0) {
-//            while (cursor.moveToNext()) {
-//                Food food = new Food();
-//                food.setID(cursor.getLong(cursor.getColumnIndex(FoodTrackerEntry._ID)));
-//                food.setName(cursor.getString(cursor.getColumnIndex(FoodTrackerEntry.KEY_NAME)));
-//                food.setType(cursor.getString(cursor.getColumnIndex(FoodTrackerEntry.KEY_TYPE)));
-//                food.setBrand(cursor.getString(cursor.getColumnIndex(FoodTrackerEntry.KEY_BRAND)));
-//                foods.add(food);
-//            }
-//        }
-//        cursor.close();
-//    }
-
 
         // UPDATE - UPDATE FOOD ITEM BY ID
 
