@@ -121,7 +121,7 @@ public class DateOperations {
 
     // SELECT - SHOW ALL RECORD DATES
 
-    public List<RecordDate> getAllRecordDates() {
+    public ArrayList<RecordDate> getAllRecordDates() {
 
         Cursor cursor = db.query(FoodTrackerContract.FoodTrackerEntry.TABLE_RECORD_DATES,
                 columns,
@@ -132,7 +132,7 @@ public class DateOperations {
                 null
         );
 
-        List<RecordDate> recordDates = new ArrayList<>();
+        ArrayList<RecordDate> recordDates = new ArrayList<>();
         if (cursor.getCount() > 0) {
             while (cursor.moveToNext()) {
                 RecordDate recordDate = new RecordDate();
