@@ -8,7 +8,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.richardallison.foodtracker.Record;
-import com.richardallison.foodtracker.RecordCursorAdapter;
 import com.richardallison.foodtracker.data.FoodTrackerContract.FoodTrackerEntry;
 
 public class RecordOperations {
@@ -66,9 +65,6 @@ public class RecordOperations {
                 FoodTrackerEntry.KEY_NAME
         };
 
-//        String sortOrder =
-//                FoodTrackerEntry.KEY_NAME + " ASC";
-
         String table = recordsTable + " inner join " + foodAndDrinks
                 + " on " + recordsTable + "." + FoodTrackerEntry.KEY_FD_ID
                 + " = " + foodAndDrinks + "." + FoodTrackerEntry._ID;
@@ -104,7 +100,7 @@ public class RecordOperations {
     // SELECT - SHOW RECORD ITEM
 
     public Record getRecord(long id) {
-        String[] recordID = new String[] {
+        String[] recordID = new String[]{
                 String.valueOf(id)
         };
 
@@ -164,7 +160,6 @@ public class RecordOperations {
     }
 
 
-
 //    private List<Record> displayRecords() {
 //
 //        String records = FoodTrackerEntry.TABLE_RECORDS;
@@ -216,7 +211,7 @@ public class RecordOperations {
     // UPDATE - UPDATE RECORD ITEM BY ID
 
     public int updateRecord(Record record) {
-        String[] recordID = new String[] {
+        String[] recordID = new String[]{
                 String.valueOf(record.getID())
         };
 
@@ -237,7 +232,7 @@ public class RecordOperations {
     // DELETE RECORD ITEM BY ID
 
     public boolean removeRecord(long id) {
-        String[] recordID = new String[] {
+        String[] recordID = new String[]{
                 String.valueOf(id)
         };
 
@@ -248,7 +243,7 @@ public class RecordOperations {
     }
 
     public void removeRecord(Record record) {
-        String[] recordID = new String[] {
+        String[] recordID = new String[]{
                 String.valueOf(record.getID())
         };
 
@@ -257,6 +252,5 @@ public class RecordOperations {
                 recordID
         );
     }
-
 
 }

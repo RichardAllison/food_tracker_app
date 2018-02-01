@@ -22,20 +22,17 @@
         app:rippleColor="@color/colorPrimaryDark"
         app:srcCompat="@android:drawable/ic_input_add" />
 
-    <ListView
-        android:id="@+id/food_database_list"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginBottom="4dp"
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/food_database_recycler"
+        android:layout_width="368dp"
+        android:layout_height="425dp"
+        android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
-        android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/create_food_button">
-
-    </ListView>
+        app:layout_constraintTop_toBottomOf="@+id/create_food_button" />
 
 </android.support.constraint.ConstraintLayout>

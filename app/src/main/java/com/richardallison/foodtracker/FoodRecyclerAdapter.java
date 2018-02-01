@@ -1,6 +1,5 @@
 package com.richardallison.foodtracker;
 
-import android.content.ContentProvider;
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -8,8 +7,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.TextView;
-
-import com.richardallison.foodtracker.data.FoodTrackerContract;
 
 import java.util.ArrayList;
 
@@ -24,7 +21,7 @@ public class FoodRecyclerAdapter extends RecyclerView.Adapter<FoodRecyclerAdapte
     @Override
     public FoodViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         Context context = parent.getContext();
-        int layoutIdForListItem = R.layout.item_food_recycler;
+        int layoutIdForListItem = R.layout.item_food;
         LayoutInflater inflater = LayoutInflater.from(context);
 
         View view = inflater.inflate(layoutIdForListItem, parent, false);

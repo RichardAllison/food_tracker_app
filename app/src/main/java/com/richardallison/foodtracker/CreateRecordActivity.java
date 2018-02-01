@@ -138,9 +138,9 @@ public class CreateRecordActivity extends AppCompatActivity {
 
         Toast.makeText(this, food.getName() + newRecord.id + " has been added to records", Toast.LENGTH_LONG).show();
 
-//        Intent intent = new Intent(this, CreateRecordActivity.class);
-//        if (intent.resolveActivity(getPackageManager()) != null) {
-//            startActivity(intent);
-//        }
+        Intent intent = new Intent(this, ViewAllRecordsActivity.class);
+        if (intent.resolveActivity(getPackageManager()) != null) {
+            startActivity(intent);
+        }
     }
 }
