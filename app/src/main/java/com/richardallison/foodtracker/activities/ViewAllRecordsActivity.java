@@ -45,7 +45,7 @@ public class ViewAllRecordsActivity extends AppCompatActivity {
     }
 
     public void onCreateRecordButtonClicked(View button) {
-        Intent intent = new Intent(this, CreateRecordActivity.class);
+        Intent intent = new Intent(this, ViewFoodDatabaseActivity.class);
         startActivity(intent);
     }
 
@@ -62,13 +62,13 @@ public class ViewAllRecordsActivity extends AppCompatActivity {
         recordOperations.close();
     }
 
-    public void onListItemClick(View listItem) {
-        Record record = (Record) listItem.getTag();
-
-        Intent intent = new Intent(this, ViewRecordActivity.class);
+//    public void onListItemClick(View listItem) {
+//        Record record = (Record) listItem.getTag();
+//
+//        Intent intent = new Intent(this, CreateRecordActivity.class);
 //        intent.putExtra("record", record);
-        startActivity(intent);
-    }
+//        startActivity(intent);
+//    }
 
 }
 

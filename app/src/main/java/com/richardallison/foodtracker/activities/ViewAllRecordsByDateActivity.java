@@ -7,6 +7,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -17,17 +18,18 @@ import com.richardallison.foodtracker.adapters.DateAdapter;
 import com.richardallison.foodtracker.data.DateOperations;
 import com.richardallison.foodtracker.data.RecordOperations;
 import com.richardallison.foodtracker.models.Record;
+import com.richardallison.foodtracker.models.RecordDate;
 
 import java.util.ArrayList;
 
 
 public class ViewAllRecordsByDateActivity extends AppCompatActivity {
-    private DateAdapter dateAdapter;
     private DateOperations dateOperations;
     private RecordOperations recordOperations;
 
     private Button createRecordButton;
     private RecyclerView dateRecyclerView;
+    private ListView recordListView;
 
 
     @Override
@@ -40,19 +42,23 @@ public class ViewAllRecordsByDateActivity extends AppCompatActivity {
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         dateRecyclerView.setLayoutManager(layoutManager);
 
-        dateRecyclerView.setHasFixedSize(true);
+        dateRecyclerView.setHasFixedSize(false);
 
-        recordOperations = new RecordOperations(this);
+
+        RecordOperations recordOperations = new RecordOperations(this);
         recordOperations.open();
         ArrayList<Record> recordArrayList = recordOperations.getAllRecords();
-                recordOperations.close();
+        recordOperations.close();
+
 
         dateOperations = new DateOperations(this);
         dateOperations.open();
-
-        dateAdapter = new DateAdapter(dateOperations.getAllRecordDates());
-        dateRecyclerView.setAdapter(dateAdapter);
+        ArrayList<RecordDate> recordDates = dateOperations.getAllRecordDates();
         dateOperations.close();
+
+
+        DateAdapter dateAdapter = new DateAdapter(recordDates, recordArrayList);
+        dateRecyclerView.setAdapter(dateAdapter);
     }
 
     public void onCreateRecordButtonClicked(View button) {
