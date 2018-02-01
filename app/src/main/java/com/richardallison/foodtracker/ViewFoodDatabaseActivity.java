@@ -23,7 +23,7 @@ public class ViewFoodDatabaseActivity extends AppCompatActivity {
     private FoodTrackerDbHelper dbHelper;
     private FoodOperations foodOperations;
 
-    private Cursor cursor;
+//    private Cursor cursor;
 
 //    FoodCursorAdapter foodCursorAdapter;
 
@@ -90,36 +90,36 @@ public class ViewFoodDatabaseActivity extends AppCompatActivity {
     }
 
 
-    private void displayFoodDatabase() {
-        dbHelper = new FoodTrackerDbHelper(this);
-        db = dbHelper.getReadableDatabase();
-
-        String[] columns = {
-                FoodTrackerContract.FoodTrackerEntry._ID,
-                FoodTrackerContract.FoodTrackerEntry.KEY_NAME,
-                FoodTrackerContract.FoodTrackerEntry.KEY_TYPE,
-                FoodTrackerContract.FoodTrackerEntry.KEY_BRAND
-        };
-
-//        String sortOrder =
-//                FoodTrackerContract.FoodTrackerEntry._ID + " ASC";
-
-        cursor = db.query(
-                FoodTrackerContract.FoodTrackerEntry.TABLE_FOOD_AND_DRINKS,
-                columns,
-                null,
-                null,
-                null,
-                null,
-                null
-        );
+//    private void displayFoodDatabase() {
+//        dbHelper = new FoodTrackerDbHelper(this);
+//        db = dbHelper.getReadableDatabase();
+//
+//        String[] columns = {
+//                FoodTrackerContract.FoodTrackerEntry._ID,
+//                FoodTrackerContract.FoodTrackerEntry.KEY_NAME,
+//                FoodTrackerContract.FoodTrackerEntry.KEY_TYPE,
+//                FoodTrackerContract.FoodTrackerEntry.KEY_BRAND
+//        };
+//
+////        String sortOrder =
+////                FoodTrackerContract.FoodTrackerEntry._ID + " ASC";
+//
+//        cursor = db.query(
+//                FoodTrackerContract.FoodTrackerEntry.TABLE_FOOD_AND_DRINKS,
+//                columns,
+//                null,
+//                null,
+//                null,
+//                null,
+//                null
+//        );
 
 //        foodCursorAdapter = new FoodCursorAdapter(this, cursor);
 //        foodDatabaseListView.setAdapter(foodCursorAdapter);
 //        foodRecyclerAdapter = new FoodRecyclerAdapter(this, cursor);
 //        foodDatabaseRecyclerView.setAdapter(foodRecyclerAdapter);
-
-    }
+//
+//    }
 
 }
 

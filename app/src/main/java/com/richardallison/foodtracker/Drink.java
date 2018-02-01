@@ -2,7 +2,7 @@ package com.richardallison.foodtracker;
 
 import java.io.Serializable;
 
-public class Drink implements Consumable, Serializable {
+public class Drink implements Serializable {
     private long id;
     private String name;
     private String brand;
