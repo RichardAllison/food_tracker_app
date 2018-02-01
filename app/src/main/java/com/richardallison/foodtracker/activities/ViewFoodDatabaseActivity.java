@@ -74,7 +74,6 @@ public class ViewFoodDatabaseActivity extends AppCompatActivity {
         intent.putExtra("food", food);
         startActivity(intent);
     }
-
 }
 
 
