@@ -46,19 +46,18 @@ public class ViewAllRecordsActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    public void onDeleteFoodItemButtonClicked(View button) {
+    public void onRecordDeleteButtonClicked(View button) {
         long id = (long) button.getTag();
         recordOperations = new RecordOperations(this);
         recordOperations.open();
         boolean recordRemoved = recordOperations.removeRecord(id);
         if (recordRemoved) {
             Toast.makeText(this, "Record deleted", Toast.LENGTH_LONG).show();
-            Intent intent = new Intent(this, ViewFoodDatabaseActivity.class);
+            Intent intent = new Intent(this, ViewRecordActivity.class);
             startActivity(intent);
         }
         recordOperations.close();
     }
-
 
     public void onListItemClick(View listItem) {
         Record record = (Record) listItem.getTag();

@@ -68,7 +68,7 @@ public class FoodTrackerDbHelper extends SQLiteOpenHelper {
                     + _ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"
                     + KEY_DATE + " TEXT,"
                     + KEY_MEAL_TIME + " TEXT,"
-                    + KEY_PORTION_SIZE + " INTEGER,"
+                    + KEY_PORTION_SIZE + " TEXT,"
                     + KEY_FD_ID + " INTEGER,"
                     + "FOREIGN KEY(" + KEY_FD_ID + ") REFERENCES " + TABLE_FOOD_AND_DRINKS + "(" + _ID + ")"
             + ");";

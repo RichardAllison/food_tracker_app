@@ -34,7 +34,6 @@ public class CreateRecordActivity extends AppCompatActivity {
     Button selectFoodButton;
     TextView recordFoodItem;
     TextView recordDateInput;
-//    EditText recordMealtimeInput;
     EditText recordPortionSizeInput;
     Food food;
     Spinner mealSpinner;

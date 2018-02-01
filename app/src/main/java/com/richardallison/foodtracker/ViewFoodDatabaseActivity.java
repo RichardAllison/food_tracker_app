@@ -15,28 +15,19 @@ import com.richardallison.foodtracker.data.FoodTrackerDbHelper;
 
 public class ViewFoodDatabaseActivity extends AppCompatActivity {
 
-    private SQLiteDatabase db;
-    private FoodTrackerDbHelper dbHelper;
     private FoodOperations foodOperations;
-
-//    private Cursor cursor;
-
-//    FoodCursorAdapter foodCursorAdapter;
 
     private FoodRecyclerAdapter foodRecyclerAdapter;
 
     Button createFoodButton;
-//    ListView foodDatabaseListView;
     RecyclerView foodDatabaseRecyclerView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-//        setContentView(R.layout.activity_view_food_database);
         setContentView(R.layout.activity_view_food_database);
 
         createFoodButton = findViewById(R.id.create_food_button);
-//        foodDatabaseListView = findViewById(R.id.food_database_list);
         foodDatabaseRecyclerView = findViewById(R.id.food_database_recycler);
 
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
@@ -44,14 +35,12 @@ public class ViewFoodDatabaseActivity extends AppCompatActivity {
 
         foodDatabaseRecyclerView.setHasFixedSize(true);
 
-        FoodOperations foodOperations = new FoodOperations(this);
+        foodOperations = new FoodOperations(this);
         foodOperations.open();
 
         foodRecyclerAdapter = new FoodRecyclerAdapter(foodOperations.showAllFood());
         foodDatabaseRecyclerView.setAdapter(foodRecyclerAdapter);
         foodOperations.close();
-
-//        displayFoodDatabase();
 
     }
 
@@ -84,38 +73,6 @@ public class ViewFoodDatabaseActivity extends AppCompatActivity {
         intent.putExtra("food", food);
         startActivity(intent);
     }
-
-
-//    private void displayFoodDatabase() {
-//        dbHelper = new FoodTrackerDbHelper(this);
-//        db = dbHelper.getReadableDatabase();
-//
-//        String[] columns = {
-//                FoodTrackerContract.FoodTrackerEntry._ID,
-//                FoodTrackerContract.FoodTrackerEntry.KEY_NAME,
-//                FoodTrackerContract.FoodTrackerEntry.KEY_TYPE,
-//                FoodTrackerContract.FoodTrackerEntry.KEY_BRAND
-//        };
-//
-////        String sortOrder =
-////                FoodTrackerContract.FoodTrackerEntry._ID + " ASC";
-//
-//        cursor = db.query(
-//                FoodTrackerContract.FoodTrackerEntry.TABLE_FOOD_AND_DRINKS,
-//                columns,
-//                null,
-//                null,
-//                null,
-//                null,
-//                null
-//        );
-
-//        foodCursorAdapter = new FoodCursorAdapter(this, cursor);
-//        foodDatabaseListView.setAdapter(foodCursorAdapter);
-//        foodRecyclerAdapter = new FoodRecyclerAdapter(this, cursor);
-//        foodDatabaseRecyclerView.setAdapter(foodRecyclerAdapter);
-//
-//    }
 
 }
 
