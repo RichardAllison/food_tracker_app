@@ -9,7 +9,6 @@ public class Record implements Serializable {
     private String foodName;
     private String date;
     private long itemID;
-//    private int mealtime;
     private String mealtime;
     private String portionSize;
 

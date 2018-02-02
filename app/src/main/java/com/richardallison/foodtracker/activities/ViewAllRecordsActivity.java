@@ -10,7 +10,6 @@ import android.widget.Button;
 import android.widget.Toast;
 
 import com.richardallison.foodtracker.R;
-import com.richardallison.foodtracker.models.Record;
 import com.richardallison.foodtracker.adapters.RecordRecyclerAdapter;
 import com.richardallison.foodtracker.data.RecordOperations;
 
@@ -56,7 +55,7 @@ public class ViewAllRecordsActivity extends AppCompatActivity {
         boolean recordRemoved = recordOperations.removeRecord(id);
         if (recordRemoved) {
             Toast.makeText(this, "Record deleted", Toast.LENGTH_LONG).show();
-            Intent intent = new Intent(this, ViewRecordActivity.class);
+            Intent intent = new Intent(this, ViewAllRecordsActivity.class);
             startActivity(intent);
         }
         recordOperations.close();
